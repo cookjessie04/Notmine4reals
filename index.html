@@ -199,6 +199,84 @@ main:has(.chat-layout) #page{overflow:hidden}
 #dm-results button strong{overflow-wrap:anywhere}
 #dm-results button span{white-space:nowrap;color:#ccc;font-size:.85em}
 @media(prefers-reduced-motion:no-preference){#friends-hub,#dm-find,#dm-results button{transition:background .16s,border-color .16s}}
+
+.channel-list .server-tools{display:grid;grid-template-columns:44px minmax(0,1fr);align-items:center;gap:8px}
+.server-tools .discover-trigger:first-child,.server-tools .server-create{width:44px;height:44px;padding:0;display:grid;place-items:center;border:1px solid #505050;border-radius:50%;background:#282828;color:white}
+.server-tools .discover-trigger{grid-column:1/-1}
+.server-tools .discover-trigger svg{width:26px;height:26px}
+.server-tools .server-create svg{width:23px;height:23px;padding:0;background:transparent;color:inherit}
+.server-tools button:is(.discover-trigger,.server-create):hover{background:#444}
+body nav .active,.channel-list button[aria-pressed=true],#dm #dm-friends [aria-current=true],.letters button[aria-pressed=true],.pref-tabs button[aria-pressed=true],.manager-tabs button[aria-pressed=true]{background:#686868;color:white}
+.channel-list .server-icon[aria-pressed=true]{outline:none;padding:4px;border-color:#686868;background:#686868}
+.channel-list .server-icon:focus-visible{outline:2px dashed white;outline-offset:2px}
+
+#modal:has(.server-manager){background:linear-gradient(150deg,#282828,#191919);border:1px solid #484848;border-radius:22px;padding:clamp(18px,4vw,30px);max-height:92dvh;overflow:auto}
+.server-manager>.row:first-child{padding-bottom:12px;border-bottom:1px solid #414141}
+.server-manager>.row button[aria-label=Close]{border-radius:50%;width:34px;height:34px;padding:0}
+.server-manager #srv-name,.server-manager #srv-icon{border-radius:12px}
+.server-access{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(155px,100%),1fr));gap:8px;border:0;margin:16px 0;padding:0}
+.server-access legend{margin-bottom:8px;font-weight:600}
+.server-manager .server-access label{display:flex;align-items:center;gap:10px;margin:0;padding:12px;border:1px solid #505050;border-radius:12px;background:#202020;cursor:pointer}
+.server-access label:has(:checked){background:#555;border-color:#999;color:white}
+.server-access input[type=radio]{width:16px;height:16px;margin:0;padding:0;accent-color:white}
+.server-access small{text-transform:none;letter-spacing:normal;display:block;margin-top:3px;font:13px/1.3 system-ui;color:#d9d9d9}
+.server-manager form:has(.server-access)>.primary{width:100%;padding:12px;border:0;border-radius:12px;background:#e9e9e9;color:#161616;font-weight:700}
+.server-manager form:has(.server-access)>.primary:hover{background:white}
+.server-manager form:has(.server-access)>.primary:disabled{opacity:.65;cursor:wait}
+#srv-error:empty{display:none}
+.channel-group-heading{display:flex;align-items:center;justify-content:space-between;gap:6px}.channel-group-heading small{overflow-wrap:anywhere}.channel-group-heading #manage-server:not([hidden]){flex:none;display:grid;place-items:center;width:32px;height:32px;padding:0;border-radius:50%;background:transparent;color:#ccc}.channel-group-heading #manage-server:is(:hover,:focus-visible){background:#555;color:white}.channel-group-heading #manage-server[hidden]{display:none}
+.channel-settings #channel-back{display:inline-flex;align-items:center;gap:5px;border:1px solid #505050;background:#292929;color:#eee;border-radius:99px;padding:7px 12px}
+.channel-settings #channel-back:hover{background:#444}
+.channel-settings .channel-heading-block{padding:16px 0 12px;margin:0}
+.channel-heading-block h2{overflow-wrap:anywhere}
+.channel-settings .manager-tabs{border-radius:14px;padding:4px}
+.channel-settings #channel-options{margin-top:14px;padding:clamp(12px,3vw,20px);border:1px solid #404040;border-radius:16px;background:#191919}
+.channel-settings #channel-options label{font-family:inherit;font-weight:600}
+.channel-settings #channel-options :is(input,select){border-radius:10px}
+.channel-settings #channel-options .primary{width:100%;background:#eee;color:#171717;border-radius:10px}
+.channel-settings #channel-options button:disabled{opacity:.45}
+.channel-settings .channel-index-title{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px;padding-top:16px;border-top:1px solid #393939}
+.channel-settings .position-controls{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.channel-settings #channel-status:empty{display:none}
+
+#channel-options select.channel-destination{
+ appearance:none;width:100%;padding:12px 42px 12px 14px;border:1px solid #555;border-radius:12px;
+ color:white;background:#252525 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ddd' stroke-width='1.6'%3E%3Cpath d='m3 6 5 5 5-5'/%3E%3C/svg%3E") right 14px center/16px no-repeat;
+ cursor:pointer;color-scheme:dark
+}
+#channel-options .channel-destination:hover{border-color:#888}
+#channel-options .channel-destination:focus-visible{outline:2px solid #bbb;outline-offset:2px}
+@supports (appearance:base-select){
+ #channel-options select.channel-destination,.channel-destination::picker(select){appearance:base-select}
+ .channel-destination::picker-icon{display:none}
+ .channel-destination::picker(select){margin-block:4px;padding:4px;border:1px solid #555;border-radius:12px;background:#222;color:white;max-height:min(240px,36dvh);overflow-y:auto;scrollbar-width:thin;scrollbar-color:#777 transparent;box-shadow:0 8px 24px #0006}
+ .channel-destination option{padding:9px 12px;border-radius:8px;cursor:pointer}
+ .channel-destination option:is(:checked,:focus-visible,:hover){background:#585858;color:white}
+}
+
+.lounge-stage{min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:18px}
+.lounge-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:12px}
+.lounge-tile{position:relative;isolation:isolate;min-height:190px;aspect-ratio:16/10;max-height:48vh;display:grid;place-items:center;overflow:hidden;border:1px solid #464646;border-radius:18px;background:radial-gradient(ellipse at center,#454545,#242424)}
+.lounge-tile .player-picture{width:clamp(64px,8vw,104px);height:auto;aspect-ratio:1;border-radius:50%;object-fit:cover}
+.lounge-tile video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lounge-tile strong,.listen-controls{position:absolute;background:#151515df;border-radius:10px;padding:6px 10px}
+.lounge-tile strong{bottom:10px;left:10px;color:white}.listen-controls{right:10px;top:10px;display:flex;align-items:center;gap:6px}.listen-controls button{font-size:13px;padding:4px 7px}.listen-controls input{width:66px;padding:0;margin:0}
+.lounge-bar{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.lounge-bar button{border-radius:99px}.lounge-bar .voice-leave{background:#983a42;color:white}
+
+#messages:has(.lounge-stage.joined){background:#070709;padding:clamp(8px,1.5vw,22px)}
+.lounge-stage.joined{height:100%;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:12px}
+.joined .lounge-grid{overflow:auto;align-content:safe center;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.joined .lounge-tile,.joined .lounge-grid .voice-invite{aspect-ratio:16/9;min-height:0;border-radius:12px;background:#222225;border:1px solid #343437}
+.joined .lounge-tile strong{font-size:.85rem;border-radius:7px}
+.joined .lounge-grid .voice-invite{display:grid;place-content:center;justify-items:center;gap:16px;color:#eee;background:radial-gradient(ellipse at top,#423749,#17151b 78%)}
+.lounge-grid .voice-invite svg{width:clamp(40px,6vw,82px);height:auto;color:#d3bde1}
+.voice-invite span{background:#212024;padding:7px 12px;border-radius:8px}
+.joined .lounge-bar{justify-self:center;background:#171719;border:1px solid #333;padding:5px;gap:4px;border-radius:16px}
+.joined .lounge-bar button{display:inline-flex;align-items:center;justify-content:center;min-width:44px;height:42px;border-radius:11px}
+.joined .voice-leave{background:#bc3444}
+#voice-note:empty{display:none}
+#voice-invites{display:grid;gap:6px;margin:16px 0}
+@media(max-width:650px){.joined .lounge-grid{grid-template-columns:1fr}.joined .lounge-grid .voice-invite{aspect-ratio:auto;padding:12px;display:flex;justify-content:center;align-items:center}.lounge-grid .voice-invite svg{width:22px}}
 </style></head><body><nav aria-label="Pages"><div class="logo"><img class="sidebar-logo" alt="NOTMINE4REAL" src="data:image/jpeg;base64,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"></div></nav><main><div class="brand">NOTMINE4REAL</div><div id="page"></div></main><section id="dm-callbox" hidden aria-label="Call"><video id="dm-remote" autoplay playsinline></video><div id="call-heading"><b id="call-person"></b><span id="dm-call-label" role="status"></span></div><div id="call-avatar" aria-hidden="true"></div><video id="dm-self" hidden autoplay muted playsinline></video><div id="call-bar"><button type="button" id="dm-answer" onclick="acceptCall()"><svg aria-hidden="true" class="dm-icon" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></svg><span>Answer</span></button><button type="button" id="call-mute" onclick="toggleMic()"><svg aria-hidden="true" class="dm-icon" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 11a7 7 0 0 0 14 0m-7 7v4m-4 0h8"/></svg><span>Mute</span></button><button type="button" id="call-size" onclick="toggleMini()"><svg aria-hidden="true" class="dm-icon" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M12 12h6v4h-6z"/></svg><span>Minimize</span></button><button type="button" id="call-pip" onclick="popVideo()"><svg aria-hidden="true" class="dm-icon" viewBox="0 0 24 24"><path d="M12 4H4v16h16v-8m-7-1 7-7m-6 0h6v6"/></svg><span>Pop out</span></button><button type="button" id="call-end" onclick="finishCall()"><svg aria-hidden="true" class="dm-icon" viewBox="0 0 24 24"><path d="M3 16v-4q9-8 18 0v4h-5v-3q-4-2-8 0v3z"/></svg><span>Hang up</span></button></div><button hidden id="call-play" onclick="resumeRemote()">Play call audio</button></section><dialog id="dm" aria-label="Direct Messages"><div class="dm-layout"><aside><button id="dm-find"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><span>Find or start a conversation</span></button><div id="dm-friends"></div><button onclick="document.querySelector('#dm').close()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m10 5-7 7 7 7M4 12h17"/></svg><span>Back to rooms</span></button></aside><section class="dm-thread"><header><strong id="dm-peer"></strong><div id="dm-calls" hidden><button onclick="dial(false)"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 3 4 1 1 5-3 2a14 14 0 0 0 6 6l2-3 5 1 1 4q0 3-4 2C9 19 5 15 3 7q-1-4 2-4z"/></svg><span>Voice call</span></button> <button onclick="dial(true)"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="6" width="12" height="12" rx="3"/><path d="m15 10 6-3v10l-6-3"/></svg><span>Video call</span></button></div></header><div id="dm-feed"></div><div id="dm-status" role="status"></div><div id="dm-capture" hidden><strong id="capture-label"></strong><time id="capture-time"></time><audio hidden controls id="voice-review"></audio><video id="dm-preview" muted autoplay playsinline></video><button id="dm-capture-action"></button> <button onclick="stopCapture()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg><span>Cancel</span></button></div><form id="dm-compose" hidden><div><button type="button" onclick="document.querySelector('#dm-photo').click()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 6"/></svg><span>Photo</span></button><input id="dm-photo" type="file" accept="image/*" hidden><button type="button" onclick="capture('snap')"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="13" r="4"/></svg><span>Snap</span></button><button type="button" onclick="capture('voice')"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 11a7 7 0 0 0 14 0m-7 7v4m-4 0h8"/></svg><span>Voice message</span></button></div><div class="dm-write"><input id="dm-text" aria-label="Direct message" placeholder="Message…" maxlength="2000"><button><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m3 10 18-7-6 18-4-8-8-3zm8 3L21 3"/></svg><span>Send</span></button></div></form></section></div><section id="dm-search" hidden><div class="row"><h2>Find a friend</h2><button onclick="document.querySelector('#dm-search').hidden=true"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg><span>Close</span></button></div><label>Search players by display name<input id="dm-query" type="search" autocomplete="off" placeholder="Enter a display name"></label><div id="dm-results" aria-live="polite"></div></section></dialog><dialog id="guide" aria-labelledby="guide-title" aria-describedby="guide-copy"><div id="guide-ring" aria-hidden="true"></div><section id="guide-card"><small id="guide-step"></small><div class="guide-progress"><i id="guide-fill"></i></div><h2 id="guide-title"></h2><p id="guide-copy"></p><div class="guide-actions"><button class="link" onclick="endTour(false)">Skip tour</button><button id="guide-back">Back</button><button class="primary" id="guide-next">Next →</button></div></section></dialog><dialog id="modal"></dialog><script>
 const $=s=>document.querySelector(s),pages=['Main hub','Games','Chat room','Settings','Profile settings'],icons=['<path d="m3 10 9-7 9 7v10h-6v-7H9v7H3z"/>','<path d="M7 7h10q3 0 4 9t-6-1H9q-8 9-6 0t4-8z"/><path d="M6 11h4m-2-2v4m7-2h.1m3 2h.1"/>','<path d="M3 4h18v13H9l-6 4z"/><path d="M7 9h10"/>','<path d="M3 7h7m4 0h7M3 17h11m4 0h3"/><circle cx="12" cy="7" r="2"/><circle cx="16" cy="17" r="2"/>','<circle cx="12" cy="8" r="4"/><path d="M4 21q0-10 8-10t8 10"/>'],games=[],genres=[];
 let mem={},persistent=true;function read(k,d){try{return JSON.parse(localStorage.getItem('afterglow.'+k))??mem[k]??d}catch{return mem[k]??d}}function save(k,v){mem[k]=v;try{localStorage.setItem('afterglow.'+k,JSON.stringify(v))}catch{persistent=false}}
@@ -800,6 +878,12 @@ function switchServer(id){
   messages();if($('#manager-list'))managerRows()
  },err=>{if(serverId===id){switchServer('');serverError(err)}})
 }
+$('#modal').addEventListener('click',event=>{
+ const box=event.currentTarget;
+ if(event.target!==box||!box.querySelector('.server-manager'))return;
+ const bounds=box.getBoundingClientRect();
+ if(event.clientX<bounds.left||event.clientX>=bounds.right||event.clientY<bounds.top||event.clientY>=bounds.bottom)closeBox()
+});
 function serverForm(manage=false,tab='Overview'){
  if(!profile())return auth(true,2);const id=serverId,srv=manage?currentServer():null;if(manage&&!srv)return;
  managerTab=tab;
@@ -810,11 +894,23 @@ function serverForm(manage=false,tab='Overview'){
  const content=$('#manager-content'),status=$('#srv-error');
  async function run(button,action){button.disabled=true;status.textContent='';try{await action()}catch(err){status.textContent=err.message}finally{button.disabled=false}}
  if(tab==='Overview'){
-  content.innerHTML='<form><label>Server name<input required maxlength="40" id="srv-name"></label><label>Server icon URL<input type="url" placeholder="https://…" id="srv-icon"></label><div class="server-upload"><button type="button" id="srv-upload"><svg aria-hidden="true" class="dm-icon" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5h16v-5"/></svg>Upload icon</button><span id="srv-filename" role="status"></span><input hidden type="file" accept="image/*" id="srv-file"></div><label>Access<select id="srv-access"><option value="public">Public · all signed-in players</option><option value="private">Invite only · selected players</option></select></label><button class="primary">'+(manage?'Save changes':'Create server')+'</button></form>';
-  $('#srv-upload').onclick=()=>$('#srv-file').click();$('#srv-file').onchange=e=>{$('#srv-filename').textContent=e.target.files[0]?.name||''};
-  $('#srv-name').value=srv?.name||'';$('#srv-access').value=srv?.access||'public';$('#srv-icon').value=srv?.icon?.startsWith('https://')?srv.icon:'';
+  content.innerHTML='<form><label>Server name<input required maxlength="40" id="srv-name"></label><label>Server icon URL<input type="url" placeholder="https://…" id="srv-icon"></label><div class="server-upload"><img hidden id="srv-preview" width="56" height="56" style="object-fit:cover;border-radius:12px" alt="Server icon preview"><button type="button" id="srv-upload"><svg aria-hidden="true" class="dm-icon" viewBox="0 0 24 24"><path d="M12 16V3m-5 5 5-5 5 5M4 15v5h16v-5"/></svg>Upload icon</button><span id="srv-filename" role="status"></span><input hidden type="file" accept="image/*" id="srv-file"></div><fieldset class="server-access"><legend>Who can join?</legend><label><input type="radio" name="access" value="public" checked><span><b>Public</b><small>Anyone can join</small></span></label><label><input type="radio" name="access" value="private"><span><b>Invite only</b><small>People you select</small></span></label></fieldset><button class="primary">'+(manage?'Save changes':'Create server')+'</button></form>';
+  const preview=$('#srv-preview'),picker=$('#srv-file'),iconURL=$('#srv-icon');
+  preview.onload=()=>{preview.hidden=false};preview.onerror=()=>{preview.hidden=true};
+  function displayIcon(src){preview.hidden=true;if(src)preview.src=src;else preview.removeAttribute('src')}
+  displayIcon(srv?.icon);
+  iconURL.oninput=()=>{if(!picker.files.length)displayIcon(iconURL.value.startsWith('https://')?iconURL.value:'')};
+  $('#srv-upload').onclick=()=>picker.click();
+  picker.onchange=async()=>{
+   const file=picker.files[0];$('#srv-filename').textContent=file?.name||'';status.textContent='';
+   displayIcon('');
+   if(!file){displayIcon(iconURL.value||srv?.icon);return}
+   try{const image=await preparePhoto(file);if(picker.files[0]===file)displayIcon(image)}
+   catch(err){if(picker.files[0]===file)status.textContent=err.message}
+  };
+  $('#srv-name').value=srv?.name||'';content.firstChild.elements.access.value=srv?.access||'public';$('#srv-icon').value=srv?.icon?.startsWith('https://')?srv.icon:'';
   content.firstChild.onsubmit=e=>{e.preventDefault();run(e.target.querySelector('.primary'),async()=>{
-   const name=$('#srv-name').value.trim(),access=$('#srv-access').value,file=$('#srv-file').files[0];
+   const name=$('#srv-name').value.trim(),access=e.target.elements.access.value,file=$('#srv-file').files[0];
    if(!name)throw Error('Enter a server name.');
    let icon=$('#srv-icon').value.trim();if(icon&&!icon.startsWith('https://'))throw Error('Use an HTTPS image URL.');
    if(file)icon=await preparePhoto(file);else if(!icon&&srv?.icon?.startsWith('data:'))icon=srv.icon;
@@ -859,7 +955,7 @@ function trashIcon(){return '<svg aria-hidden="true" viewBox="0 0 24 24" width="
 function channelSettings(original,tab='Details',notice=''){
  const sid=serverId,c=channels.find(x=>x.id===original.id)||original;
  if(!currentServer()||currentServer().owner!==window.arcadeAccounts.current()?.uid)return;
- dialog('<section class="server-manager channel-settings"><button type="button" id="channel-back">← All channels</button><div class="channel-heading-block"><small>'+esc(serverName())+' · '+esc(c.kind)+' channel</small><h2>'+esc(c.name)+'</h2></div><div class="manager-tabs">'+['Details','Organization','Delete'].map(t=>'<button type="button" data-section="'+t+'" aria-pressed="'+(tab===t)+'">'+t+'</button>').join('')+'</div><div id="channel-options"></div><p id="channel-status" role="status"></p></section>');
+ dialog('<section class="server-manager channel-settings"><button type="button" id="channel-back"><svg aria-hidden="true" class="dm-icon" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></svg>All channels</button><div class="channel-heading-block"><small>'+esc(serverName())+' · '+esc(c.kind)+' channel</small><h2>'+esc(c.name)+'</h2></div><div class="manager-tabs">'+['Details','Organization','Delete'].map(t=>'<button type="button" data-section="'+t+'" aria-pressed="'+(tab===t)+'">'+t+'</button>').join('')+'</div><div id="channel-options"></div><p id="channel-status" role="status"></p></section>');
  $('#channel-back').onclick=()=>serverForm(true,'Channels');document.querySelectorAll('.channel-settings [data-section]').forEach(b=>b.onclick=()=>channelSettings(c,b.dataset.section));
  const content=$('#channel-options'),status=$('#channel-status');status.textContent=notice;
  async function act(button,fn){
@@ -873,8 +969,9 @@ function channelSettings(original,tab='Details',notice=''){
  }else if(tab==='Organization'){
   const blocked=new Set([c.id]);for(const x of channels)if(blocked.has(x.parent))blocked.add(x.id);
   const siblings=channels.filter(x=>(x.parent||'')===(c.parent||'')),index=siblings.findIndex(x=>x.id===c.id);
-  content.innerHTML='<form><label>Parent channel<select><option value="">Top level</option>'+channels.filter(x=>!blocked.has(x.id)).map(x=>'<option value="'+esc(x.id)+'">'+esc(x.name)+'</option>').join('')+'</select></label><button class="primary">Save location</button></form><h3 class="channel-index-title">Order within this level</h3><div class="position-controls"><button type="button" data-dir="-1" '+(index<=0?'disabled':'')+'>↑ Move up</button><button type="button" data-dir="1" '+(index<0||index===siblings.length-1?'disabled':'')+'>↓ Move down</button></div>';
-  const form=content.firstChild,select=form.querySelector('select');select.value=c.parent||'';
+  const currentParent=channels.find(x=>x.id===c.parent);
+  content.innerHTML='<form><label>Move into<select class="channel-destination"><option value="">'+(currentParent?'Move out of '+esc(currentParent.name)+' (top level)':'Top level')+'</option>'+channels.filter(x=>!blocked.has(x.id)).map(x=>'<option value="'+esc(x.id)+'">'+esc(x.name)+'</option>').join('')+'</select></label><button class="primary">Move channel</button></form><h3 class="channel-index-title">Channel order <small>'+ (index>=0?(index+1)+' of '+siblings.length:'') +'</small></h3><div class="position-controls"><button type="button" data-dir="-1" '+(index<=0?'disabled':'')+'>↑ Move up</button><button type="button" data-dir="1" '+(index<0||index===siblings.length-1?'disabled':'')+'>↓ Move down</button></div>';
+  const form=content.firstChild,select=form.querySelector('select');select.value=c.parent||'';const move=form.querySelector('button');move.disabled=true;select.onchange=()=>{move.disabled=select.value===(c.parent||'')};
   form.onsubmit=e=>{e.preventDefault();act(form.querySelector('button'),async()=>{
    const parent=select.value;let cursor=parent;const seen=new Set([c.id]);
    while(cursor){if(seen.has(cursor))throw Error('Choose a parent outside this channel.');seen.add(cursor);cursor=channels.find(x=>x.id===cursor)?.parent}
@@ -892,14 +989,46 @@ function channelSettings(original,tab='Details',notice=''){
   const button=content.querySelector('.danger-action');button.onclick=()=>act(button,async()=>{await serverAPI.removeChannel(sid,c.id);if(button.isConnected){serverForm(true,'Channels');$('#srv-error').textContent='Channel deleted.'}})
  }
 }
+function loungeInvite(){
+ const edges=relationships.filter(r=>r.state==='accepted');
+ const room=channels.find(c=>c.id===activeRoom)?.name||'Lounge',server=serverName();
+ dialog('<h2>Invite to '+esc(room)+'</h2><div id="voice-invites"></div><p role="status" id="invite-feedback"></p><button onclick="closeBox()">Close</button>');
+ const list=$('#voice-invites'),feedback=$('#invite-feedback');if(!edges.length)list.textContent='Add a friend to invite them here.';
+ for(const edge of edges){const b=document.createElement('button');b.textContent='Invite '+label(edge.other);list.append(b);
+ b.onclick=async()=>{b.disabled=true;try{await window.playerNetwork.sendMessage(edge.id,{text:'Join me in '+room+' on '+server+'. Open Chat, select the server, then join the voice channel.'});b.textContent='Invited '+label(edge.other)}catch(err){feedback.textContent=err.message;b.disabled=false}}}
+}
+function voiceIcon(path){return '<svg aria-hidden="true" viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="'+path+'"/></svg>'}
 function renderVoice(){
- const v=voiceSession;$('#room-status').textContent=v?'Voice connected':'Voice channel';
- $('#messages').innerHTML='<div class="voice-lounge"><h3>'+esc(channels.find(c=>c.id===activeRoom)?.name||'Voice')+'</h3><p id="voice-note">'+(v?'Microphone connected':'Join to talk with people in this channel.')+'</p><div id="voice-members"></div>'+(v?'<button id="voice-mute">Mute microphone</button> <button onclick="leaveVoice();renderVoice()">Leave voice</button>':'<button class="primary" onclick="joinVoice(this)">Join voice</button>')+'</div>';
- if(v){const b=$('#voice-mute');b.textContent=v.muted?'Unmute microphone':'Mute microphone';b.onclick=()=>{v.muted=!v.muted;v.stream.getAudioTracks().forEach(t=>t.enabled=!v.muted);b.textContent=v.muted?'Unmute microphone':'Mute microphone'};$('#voice-members').textContent=(v.names||[]).join(' · ')}
+ const v=voiceSession,feed=$('#messages');if(!feed)return;
+ $('#room-status').textContent=v?'Voice connected':'Voice channel';
+ const me={id:v?.api.id||'',uid:user,name:profile()?.name||'You'};
+ const people=[me,...(v?.members||[]).filter(x=>x.id!==me.id)];
+ feed.innerHTML='<section class="lounge-stage '+(v?'joined':'')+'"><div class="lounge-grid"></div><div class="lounge-bar">'+(v?'<button id="voice-mute"></button><button id="voice-camera"></button><button class="voice-leave" onclick="leaveVoice();renderVoice()">Disconnect</button>':'<button class="primary" onclick="joinVoice(this)">Join voice</button>')+'</div><p role="status" id="voice-note"></p></section>';
+ for(const person of people){
+  const self=person===me,pair=v?.peers.get(person.id),tile=document.createElement('article');
+  tile.className='lounge-tile';tile.innerHTML=avatarTag(person.uid||'')+'<strong>'+esc(person.name)+(self?' · You':'')+'</strong>';
+  const track=self?v?.camera:pair?.cameraOn&&pair.video;
+  if(track){const video=document.createElement('video');video.autoplay=true;video.playsInline=true;video.muted=true;video.srcObject=new MediaStream([track]);tile.prepend(video);tile.querySelector('img').hidden=true}
+  if(!self&&pair){const controls=document.createElement('div');controls.className='listen-controls';controls.innerHTML='<button type="button"></button><input type="range" min="0" max="100" aria-label="Listening volume">';
+   const mute=controls.firstChild,volume=controls.lastChild;function labelMute(){mute.textContent=pair.audio.muted?'Unmute':'Mute';mute.title=mute.textContent+' '+person.name+' for you'}
+   labelMute();mute.onclick=()=>{pair.audio.muted=!pair.audio.muted;labelMute()};volume.value=Math.round(pair.audio.volume*100);volume.oninput=()=>{pair.audio.volume=Number(volume.value)/100};tile.append(controls)}
+  feed.querySelector('.lounge-grid').append(tile)
+ }
+ if(!v)return;
+ const grid=feed.querySelector('.lounge-grid'),bar=feed.querySelector('.lounge-bar');
+ const invite=document.createElement('button');invite.type='button';invite.className='voice-invite';invite.onclick=loungeInvite;
+ invite.innerHTML=voiceIcon('M4 9v6m4-10v14m4-17v20m4-17v14m4-10v6')+'<span>Invite to voice</span>';if(people.length===1)grid.append(invite);else bar.prepend(invite);
+ const hang=bar.querySelector('.voice-leave');hang.title=hang.ariaLabel='Disconnect';hang.innerHTML=voiceIcon('M3 16v-4q9-9 18 0v4l-5-1v-3q-4-2-8 0v3z');
+ const mic=$('#voice-mute'),cam=$('#voice-camera');mic.title=mic.ariaLabel=v.muted?'Unmute mic':'Mute mic';mic.innerHTML=voiceIcon('M9 6a3 3 0 0 1 6 0v6a3 3 0 0 1-6 0zM5 12a7 7 0 0 0 14 0m-7 7v3m-4 0h8'+(v.muted?'M2 2l20 20':''));mic.onclick=()=>{v.muted=!v.muted;v.stream.getAudioTracks().forEach(t=>t.enabled=!v.muted);renderVoice()};
+ cam.title=cam.ariaLabel=v.camera?'Turn camera off':'Turn camera on';cam.innerHTML=voiceIcon('M3 6h12v12H3zM15 10l6-4v12l-6-4'+(v.camera?'':'M2 2l20 20'));cam.disabled=!!v.cameraBusy;
+ cam.onclick=async()=>{v.cameraBusy=true;cam.disabled=true;
+ try{if(v.camera){v.camera.stop();v.camera=null}else{const stream=await navigator.mediaDevices.getUserMedia({video:true});const track=stream.getVideoTracks()[0];if(voiceSession!==v){track.stop();return}v.camera=track}
+ await Promise.all([...v.peers.values()].map(async pair=>{await pair.sender.replaceTrack(v.camera||null);pair.announce()}))}
+ catch(err){serverError(err)}finally{v.cameraBusy=false;if(voiceSession===v&&$('#voice-camera'))renderVoice()}}
 }
 function leaveVoice(){
  const v=voiceSession;if(!v)return;voiceSession=null;clearInterval(v.timer);for(const stop of v.stops)stop();
- for(const p of v.peers.values()){p.pc.close();p.audio.remove()}v.stream?.getTracks().forEach(t=>t.stop());v.api.leave().catch(()=>{})
+ for(const p of v.peers.values()){p.pc.close();p.audio.remove()}v.stream?.getTracks().forEach(t=>t.stop());v.camera?.stop();v.api.leave().catch(()=>{})
 }
 async function joinVoice(button){
  if(voiceSession||call)return serverError(Error('Leave the current call first.'));
@@ -907,13 +1036,18 @@ async function joinVoice(button){
  let stream;
  try{stream=await navigator.mediaDevices.getUserMedia({audio:true});
  if(!button.isConnected||server!==serverId||channel!==activeRoom){stream.getTracks().forEach(t=>t.stop());return}
- const api=serverAPI.voice(server,channel),v=voiceSession={api,stream,peers:new Map(),stops:[],muted:false,names:[]};
+ const api=serverAPI.voice(server,channel),v=voiceSession={api,stream,peers:new Map(),stops:[],muted:false,members:[]};
  const warn=e=>{if(voiceSession===v)serverError(e)};
  await api.enter(profile().name);if(voiceSession!==v){api.leave().catch(()=>{});return}renderVoice();
  const getPeer=id=>{if(v.peers.has(id))return v.peers.get(id);
   const pc=new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'},...(window.arcadeTurnServers||[])]}),audio=document.createElement('audio');audio.autoplay=true;document.body.append(audio);
   const pair={pc,audio,ice:[]};v.peers.set(id,pair);stream.getTracks().forEach(t=>pc.addTrack(t,stream));
-  pc.ontrack=e=>{audio.srcObject=e.streams[0];audio.play().catch(warn)};pc.onicecandidate=e=>{if(e.candidate&&voiceSession===v)api.send(id,'ice',e.candidate.toJSON()).catch(warn)};
+  pair.sender=pc.addTransceiver(v.camera||'video',{direction:'sendrecv'}).sender;
+  const state=pc.createDataChannel('lounge-camera',{negotiated:true,id:0});
+  pair.announce=()=>{if(state.readyState==='open')state.send(v.camera?'on':'off')};state.onopen=pair.announce;
+  const refresh=()=>{if(voiceSession===v&&$('#voice-camera'))renderVoice()};
+  state.onmessage=e=>{pair.cameraOn=e.data==='on';refresh()};
+  pc.ontrack=e=>{if(e.track.kind==='video'){pair.video=e.track;refresh()}else{audio.srcObject=new MediaStream([e.track]);audio.play().catch(warn)}};pc.onicecandidate=e=>{if(e.candidate&&voiceSession===v)api.send(id,'ice',e.candidate.toJSON()).catch(warn)};
   return pair
  };
  let queue=Promise.resolve();v.stops.push(api.listen(m=>{queue=queue.then(async()=>{
@@ -922,15 +1056,16 @@ async function joinVoice(button){
   await pc.setRemoteDescription(m.data);for(const ice of pair.ice.splice(0))await pc.addIceCandidate(ice);
   if(m.type==='offer'){await pc.setLocalDescription(await pc.createAnswer());await api.send(m.from,'answer',pc.localDescription.toJSON())}
  }).catch(warn)},warn));
- v.stops.push(api.members(rows=>{if(voiceSession!==v)return;const live=rows.filter(p=>Date.now()-p.time<75000);v.names=live.map(p=>p.name);if($('#voice-members'))$('#voice-members').textContent=v.names.join(' · ');
+ v.stops.push(api.members(rows=>{if(voiceSession!==v)return;const live=rows.filter(p=>Date.now()-p.time<75000);v.members=live;
   for(const [id,p] of v.peers)if(!live.some(x=>x.id===id)){p.pc.close();p.audio.remove();v.peers.delete(id)}
   for(const person of live){if(person.id<=api.id||v.peers.has(person.id))continue;const pc=getPeer(person.id).pc;(async()=>{await pc.setLocalDescription(await pc.createOffer());await api.send(person.id,'offer',pc.localDescription.toJSON())})().catch(warn)}
+  if($('#voice-camera'))renderVoice();
  },warn));v.timer=setInterval(()=>api.beat().catch(warn),25000)
  }catch(err){if(voiceSession?.stream===stream&&stream)leaveVoice();stream?.getTracks().forEach(t=>t.stop());if($('#messages')&&server===serverId&&channel===activeRoom){renderVoice();serverError(err)}}
 }
 window.addEventListener('pagehide',leaveVoice);
 
-function chatPage(){return '<section class="chat-layout" aria-label="Chat rooms"><aside class="channel-list"><h2>NOTMINE4REAL</h2><small id="channel-group">MAIN</small><div class="room-list" role="group" aria-label="Channels">'+roomButtons()+'</div><div id="server-icons" role="group" aria-label="Switch server"></div><div class="server-tools"><button onclick="serverForm()" aria-label="Create server" title="Create server" class="server-create"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>Create server</span></button><button type="button" class="discover-trigger" aria-label="Discovery" title="Discovery" onclick="discoverServers()"><svg aria-hidden="true" viewBox="0 0 24 24" class="dm-icon"><circle cx="12" cy="12" r="9"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5z"/></svg></button><button id="manage-server" hidden onclick="serverForm(true)">Manage</button></div><button id="friends-hub" class="add-friend" onclick="openDM()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2m3-14v6m-3-3h6"/></svg><span>Friends</span><b id="friends-count" hidden></b></button></aside><div class="chat-column"><div class="channel-heading"><h3 id="room-name"></h3><small id="room-status" role="status">Connecting…</small></div><div id="messages" role="log" aria-label="Room messages"></div><form id="chat"><input maxlength="400" required id="msg" aria-label="Message" autocomplete="off"><button class="primary">'+(profile()?'Send':'Log in')+'</button></form></div></section>'}
+function chatPage(){return '<section class="chat-layout" aria-label="Chat rooms"><aside class="channel-list"><h2>NOTMINE4REAL</h2><div class="channel-group-heading"><small id="channel-group">MAIN</small><button type="button" id="manage-server" hidden onclick="serverForm(true)" title="Manage server" aria-label="Manage server"><svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"><path d="m10 3-.6 2.2-2 .9-2-.7-2 3.4 1.6 1.6v2.9L3.4 15l2 3.5 2.2-.6 2 .9.5 2.2h3.8l.6-2.2 2-.9 2 .7 2-3.5-1.6-1.6v-2.9l1.6-1.6-2-3.5-2.2.6-2-.9L14 3z"/><circle cx="12" cy="12" r="3"/></svg></button></div><div class="room-list" role="group" aria-label="Channels">'+roomButtons()+'</div><div id="server-icons" role="group" aria-label="Switch server"></div><div class="server-tools"><button type="button" class="discover-trigger" aria-label="Discovery" title="Discovery" onclick="discoverServers()"><svg aria-hidden="true" viewBox="0 0 24 24" class="dm-icon"><circle cx="12" cy="12" r="9"/><path d="m16 8-2.5 5.5L8 16l2.5-5.5z"/></svg></button><button onclick="serverForm()" aria-label="Create server" title="Create server" class="server-create"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></div><button id="friends-hub" class="add-friend" onclick="openDM()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2m3-14v6m-3-3h6"/></svg><span>Friends</span><b id="friends-count" hidden></b></button></aside><div class="chat-column"><div class="channel-heading"><h3 id="room-name"></h3><small id="room-status" role="status">Connecting…</small></div><div id="messages" role="log" aria-label="Room messages"></div><form id="chat"><input maxlength="400" required id="msg" aria-label="Message" autocomplete="off"><button class="primary">'+(profile()?'Send':'Log in')+'</button></form></div></section>'}
 function roomButtons(){return roomNames.map(name=>'<button type="button" data-room="'+name+'" aria-pressed="'+(name===activeRoom)+'" onclick="selectRoom(this.dataset.room)">'+name+'</button>').join('')}
 function selectRoom(name){
  if(!roomNames.includes(name))return;
@@ -1630,7 +1765,7 @@ welcomeOnArrival();
    manage:(id,name,channel,title,kind)=>{const batch=writeBatch(db);batch.update(doc(allServers,id),{name});if(title){const ref=channel?doc(channelList(id),channel):doc(channelList(id));if(channel)batch.update(ref,{name:title});else batch.set(ref,{name:title,kind})}return batch.commit()},
    voice:(sid,cid)=>{const peers=collection(db,'servers',sid,'channels',cid,'peers'),self=doc(peers),signals=id=>collection(peers,id,'signals');return {
     id:self.id,enter:name=>setDoc(self,{uid:service.currentUser.uid,name,seen:serverTimestamp()}),beat:()=>updateDoc(self,{seen:serverTimestamp()}),leave:()=>deleteDoc(self),
-    members:(ok,fail)=>onSnapshot(peers,s=>ok(s.docs.map(d=>({id:d.id,name:d.data().name,time:d.data({serverTimestamps:'estimate'}).seen?.toMillis()||0}))),fail),
+    members:(ok,fail)=>onSnapshot(peers,s=>ok(s.docs.map(d=>({id:d.id,uid:"uid_"+d.data().uid,name:d.data().name,time:d.data({serverTimestamps:'estimate'}).seen?.toMillis()||0}))),fail),
     send:(id,type,data)=>addDoc(signals(id),{from:self.id,type,data:JSON.stringify(data),at:serverTimestamp()}),
     listen:(ok,fail)=>onSnapshot(query(signals(self.id),orderBy('at')),s=>{for(const change of s.docChanges()){if(change.type!=='added')continue;const m=change.doc.data();try{ok({...m,data:JSON.parse(m.data)})}finally{deleteDoc(change.doc.ref).catch(()=>{})}}},fail)
    }}
