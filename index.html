@@ -1,0 +1,1014 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NOTMINE4REAL</title><style>
+*{box-sizing:border-box}body{margin:0;background:#101010;color:#f4f4f4;font:16px Inter,Arial,sans-serif}button,input,select{font:inherit}button,select{cursor:pointer}button{border:0;color:inherit;background:#2e2e2e;padding:11px 15px;border-radius:8px}button:hover,button:focus-visible{filter:brightness(1.2);outline:2px solid #b7b7b7}nav{position:fixed;left:0;top:0;bottom:0;width:76px;background:#181818;border-right:1px solid #313131;display:flex;flex-direction:column;align-items:center;padding:22px 8px;gap:12px;z-index:2}nav button{background:transparent;color:#afafaf;padding:12px}nav svg{display:block;width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linejoin:round;stroke-linecap:round}.active{background:#313131;color:#bebebe}.logo{font:bold 30px monospace;color:#d0d0d0;margin-bottom:10px;text-shadow:3px 3px #6b6b6b}main{margin-left:76px;padding:0 clamp(18px,5vw,80px) 40px;max-width:1600px}header,.row,.head{display:flex;align-items:center;justify-content:space-between;gap:12px}header{height:79px;border-bottom:1px solid #2d2d2d}.brand,b,small,label{font-family:monospace}.brand{font-size:19px;font-weight:bold;letter-spacing:1px}.brand span,.link{color:#b6b6b6}.link{background:transparent}h1,h2,h3,p{margin:0}h1{font-size:clamp(38px,5vw,68px);letter-spacing:-.065em;line-height:.98}h2{font-size:27px;letter-spacing:-1px}h3{font-size:19px}p{color:#c4c4c4;line-height:1.55}.hero{position:relative;isolation:isolate;overflow:hidden;margin:28px 0 30px;border:1px solid #4c4c4c;border-radius:15px;background:#202020;padding:clamp(24px,4vw,56px);min-height:290px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:15px}.hero canvas{position:absolute;inset:0;width:100%;height:100%;z-index:-2;image-rendering:pixelated}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#1c1c1cf5 8%,#1c1c1cc9 40%,transparent 76%);z-index:-1}.tag,small{font:bold 11px monospace;letter-spacing:1.5px;text-transform:uppercase;color:#c7c7c7}.primary{background:#b9b9b9;color:#1b1b1b;font-weight:bold}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin:15px 0 26px}.card{text-align:left;padding:0;overflow:hidden;background:#1f1f1f;border:1px solid #373737;border-radius:12px}.card canvas{width:100%;height:124px;display:block;image-rendering:pixelated}.info{padding:17px}.info small{display:block;margin-bottom:7px}.panel{background:#1f1f1f;border:1px solid #373737;border-radius:12px;padding:22px;margin:16px 0}.panel p{margin:8px 0}.head{margin-top:30px}dialog{width:min(450px,94vw);color:inherit;background:#212121;border:1px solid #666666;border-radius:17px;padding:27px;box-shadow:0 18px 90px #0008}dialog[open]{animation:arrive .35s ease-out}dialog::backdrop{background:#080808c9}dialog h2{margin:17px 0}dialog p{margin-bottom:18px}.spark{font-size:46px;color:#cccccc;text-shadow:0 0 24px #898989;animation:pulse 1.8s infinite alternate}@keyframes pulse{to{transform:translateY(-4px);text-shadow:0 0 32px #bbbbbb}}@keyframes arrive{from{opacity:0;transform:translateY(18px) scale(.96)}}input,select{display:block;width:100%;background:#131313;color:white;border:1px solid #535353;padding:12px;border-radius:8px;margin:7px 0 16px}#messages{min-height:160px;max-height:320px;overflow:auto;overflow-wrap:anywhere}.game{width:100%;height:370px;border:0;border-radius:12px;margin-top:16px;background:#1a1a1a}body[data-side=right] nav{left:auto;right:0}body[data-side=right] main{margin:0 76px 0 0}body:is([data-side=top],[data-side=bottom]) nav{width:100%;height:60px;flex-direction:row;justify-content:center;padding:4px;bottom:auto}body:is([data-side=top],[data-side=bottom]) .logo{margin:0 16px 0 0}body[data-side=bottom] nav{top:auto;bottom:0}body[data-side=top] main{margin:60px 0 0}body[data-side=bottom] main{margin:0 0 60px}@media(max-width:690px){nav{width:53px;padding:16px 3px;gap:5px}main{margin-left:53px;padding-inline:13px}body[data-side=right] main{margin-right:53px}.brand{font-size:14px}.grid{grid-template-columns:1fr}.card{display:flex;align-items:center}.card canvas{width:38%;height:86px}.hero{min-height:255px}.row{flex-wrap:wrap}.logo{font-size:24px}}@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+
+.chat-entry{width:100%;text-align:left}.chat-entry strong{display:block;margin-top:5px;font-size:19px}
+nav{overflow:hidden;transition:width .2s,height .2s}
+nav button{display:flex;align-items:center;justify-content:center}
+nav button svg{flex:none}
+nav button span{max-width:0;overflow:hidden;opacity:0;white-space:nowrap;transition:max-width .2s,opacity .15s}
+nav button span{max-width:90px;opacity:1}
+body:is([data-side=left],[data-side=right]) nav{width:148px}
+body:is([data-side=left],[data-side=right]) nav button{width:100%;justify-content:flex-start;gap:12px}
+body:is([data-side=top],[data-side=bottom]) nav{height:78px}
+body:is([data-side=top],[data-side=bottom]) nav button{flex-direction:column;padding:6px}
+body:is([data-side=top],[data-side=bottom]) nav button span{font-size:12px;line-height:0}
+body:is([data-side=top],[data-side=bottom]) nav button span{line-height:18px}
+@media(max-width:480px){body:is([data-side=top],[data-side=bottom]) nav{gap:2px}body:is([data-side=top],[data-side=bottom]) .logo{display:none}}
+
+.showcase{background:radial-gradient(ellipse at 50% 56%,#424242,#191919 67%);overflow:hidden;border:1px solid #444;border-radius:16px;margin:26px 0;padding:14px clamp(12px,3vw,34px) 18px}.orbit{overflow:hidden;height:clamp(250px,31vw,410px);margin:8px 0 14px}.track{display:flex;height:100%;gap:12px;position:relative;left:7%}.track.moving{transition:transform 1.35s cubic-bezier(.4,0,.2,1)}.poster{flex:0 0 86%;position:relative;min-width:0;height:100%;border:1px solid #777;border-radius:12px;overflow:hidden;padding:0}.poster:focus-visible{outline-offset:-4px}.poster canvas{width:100%;height:100%;image-rendering:pixelated}.poster span{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:left;padding:clamp(12px,2vw,27px);background:linear-gradient(transparent 27%,#000d)}.poster strong{font-size:clamp(19px,3.4vw,54px);letter-spacing:-.06em}.controls{display:flex;align-items:center;justify-content:center;gap:10px}.controls button{font-size:13px;padding:7px 11px}.controls b{font-size:11px;letter-spacing:1px}.card,.chat-entry{transition:transform .25s,box-shadow .25s,border-color .25s}.card canvas{transition:transform .45s}.card:is(:hover,:focus-visible),.chat-entry:is(:hover,:focus-visible){transform:translateY(-5px);box-shadow:0 10px 24px #0007;border-color:#aaa}.card:hover canvas{transform:scale(1.035)}@media(prefers-reduced-motion:reduce){.track.moving,.poster,.card,.card canvas,.chat-entry{transition:none}}
+
+body.playing nav,body.playing header{display:none}
+body.playing main{margin:0;padding:0;max-width:none}
+#viewer{display:flex;flex-direction:column;height:100vh;height:100dvh;background:#101010;padding:clamp(10px,2vw,24px);gap:12px}
+#viewer .game{flex:1;min-height:0;margin:0;background:#1e1e1e}
+#viewer.expanded{position:fixed;inset:0;z-index:10}
+
+body.playing{background:radial-gradient(ellipse at 50% 40%,#292929,#101010 75%)}
+body.playing main{--viewer-margin:clamp(12px,4vmin,52px);min-height:100dvh;display:grid;grid-template-columns:minmax(0,1fr);place-items:center stretch;padding:var(--viewer-margin) clamp(6px,1vw,18px)}
+#viewer{width:100%;min-width:0;height:calc(100dvh - 2 * var(--viewer-margin));gap:15px;padding:16px;border:1px solid #424242;border-radius:24px;background:#202020;box-shadow:0 20px 65px #0006}
+#viewer>.row{padding:0 3px}#viewer h2{font-size:clamp(18px,3vw,25px)}
+#viewer .game{flex:1;min-height:0;width:100%;height:0;border-radius:15px;background:#141414}
+.viewer-actions{display:flex;gap:7px}.viewer-actions>a{margin-inline-end:12px}.viewer-actions button{display:inline-flex;align-items:center;gap:7px;min-height:38px;padding:8px 13px;border:1px solid #555;border-radius:999px;background:#282828;font-size:13px;font-weight:600;transition:background .18s,transform .18s}.viewer-actions #full{background:#e9e9e9;color:#151515;border-color:#eee}.viewer-actions button:hover{transform:translateY(-2px)}.viewer-actions svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#viewer:fullscreen,#viewer.expanded{width:100%;max-width:none;height:100dvh;border:0;border-radius:0}
+#viewer:fullscreen .game,#viewer.expanded .game{flex:1;min-height:0}
+@media(max-width:480px){#viewer{padding:12px}.viewer-actions button{padding:8px 10px}}
+
+body{--rail:148px;isolation:isolate;min-height:100vh;background:#0a0a0a}
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-repeat:repeat}
+body::before{top:-500px;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAMAAAD8CC+4AAADAFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+/LkhhAAABAHRSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1O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);background-size:500px 500px;animation:distantStars 115s linear infinite}
+body::after{top:-420px;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaQAAAGkCAMAAABJkqEHAAADAFBMVEX///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+/LkhhAAABAHRSTlMAAQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/qVjM+gAAAmxJREFUeJzt3bFKW2EYx2GnjIKC4pBFUAmiN2DARTKWJNDFkMU4ZSuEQEbJlKGrQhw6dhAHb6BL76BjyXKgN9LJzfhCJHlPzPPsh/ODc/5847e1xSJ633vZCURqvVp2AiysNvb/lt747zg7gcg6LWk/O4DQY/GYnUBgvygKWyo7S1oHdgQAAAAAAAAAAAAAAAAAAAAAsJDLwWV2ApHB3SA7gYglAQAAkOmkdZKdQKR128pOIGJJAAAAAAAAAAAAAAAAwPJsN7ezE4g0fzSzE4hYEgAAAAAAAAAAQKLTyWl2ApHJv0l2AhFLAlia3f5udgKR/p9+dgIRSwIAAAAAAABK5KB+kJ1ApP61np1AxJIAAODV3tVedgKRq29X2QlELAkAAN5wlh1A6Hn2nJ1A4Gw2m725pePG8epreNu8JTW+NFbewjxzziRLAgA+vWqnmp1ApPPQyU4gYkkAAAAAAAAAAJ/Jplyfe3R9lJ2wuE25iPr67jo7YXGWBAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwct2nbnYCkadfT9kJRCwJAErlPDuA0Evxkp1A4LwoClsqO0taB3YEAAAAAMDSXIwushOIjB5G2QlELAkAAAAAAAAAAAAAAAAor52bnewEIje/b7ITXnWmneyEkirRkqbTaXbCBqhUKx953JJWoNLutj/0lVi+arfbrWZH8D5LWgcfPJMAAAAAAAAAAAAAAAAAAAAAAAAAAACAeRrDRnYCkeFwmJ1AxJJgI7Tv29kJRO5/3mcnELEkAAAAAOA9h63D7AQirUErO4GIJQEAAAAAAAAAALBhar3a6l72HxY7VWA2iAYjAAAAAElFTkSuQmCC);background-size:420px 420px;animation:nearStars 72s linear infinite}
+@keyframes distantStars{to{transform:translate3d(0,500px,0)}}@keyframes nearStars{to{transform:translate3d(0,420px,0)}}
+nav,.chat-entry{background:rgba(35,35,35,.66)}
+.logo{font:700 14px monospace;color:#fff;text-shadow:none}
+.brand{padding:24px 0 15px}.orbit{margin:0 0 20px}
+body[data-side=left] main{margin-left:var(--rail)}
+body[data-side=right] main{margin-right:var(--rail)}
+body:is([data-side=left],[data-side=right]) nav{width:var(--rail)}
+body[data-side=top] main{margin-top:78px}body[data-side=bottom] main{margin-bottom:78px}
+body.playing main{margin:0}body.playing .brand{display:none}
+@media(max-width:690px){body{--rail:98px}.logo{font-size:12px}body:is([data-side=left],[data-side=right]) nav button{gap:5px;font-size:12px;padding:9px 4px}nav svg{width:18px;height:18px}}
+@media(max-width:480px){body:is([data-side=top],[data-side=bottom]) .logo{display:block;font-size:10px;margin:0}body:is([data-side=top],[data-side=bottom]) nav{gap:0}body:is([data-side=top],[data-side=bottom]) nav button{padding:4px}}
+body.playing[data-side] main{margin:0}
+@media(prefers-reduced-motion:reduce){body::before,body::after{animation:none}}body.playing::before,body.playing::after{display:none}.board-message{font-size:clamp(18px,1.7vw,22px);overflow-wrap:anywhere}.game-cover{width:100%;height:124px;object-fit:cover;display:block}@media(max-width:690px){.game-cover{width:38%;height:86px}}.poster{background:#181818}.poster .game-cover{--inset:clamp(8px,1vw,14px);position:absolute;top:var(--inset);left:var(--inset);width:calc(100% - 2 * var(--inset));height:calc(100% - 2 * var(--inset));object-fit:cover;border-radius:8px}.grid .card{height:316px;display:flex;flex-direction:column;align-items:stretch}.grid .card .game-cover{width:100%;height:0;min-height:0;flex:1;object-fit:cover}.grid .card .info{flex:none}.sidebar-logo{border-radius:20%;display:block;width:76px;height:76px;object-fit:contain}body:is([data-side=top],[data-side=bottom]) .sidebar-logo{width:44px;height:44px}.library-tools{margin:20px 0 12px}.letters{display:flex;gap:5px;flex-wrap:wrap}.letters button{min-width:32px;padding:7px;font-size:14px}.letters button[aria-pressed=true]{background:#eee;color:#151515}.letters button:disabled{opacity:.35;cursor:default}.library-tools input{max-width:520px}#game-count{font-size:14px}.arrival{text-align:center;padding:8px 0}.arrival img{width:88px;height:88px;border-radius:20%;display:block;margin:0 auto 22px}.arrival h2{margin:0 0 24px;font-size:clamp(24px,5vw,34px)}.arrival h2 span{display:block;font:14px monospace;color:#ccc;margin-bottom:6px}.arrival-actions{display:flex;justify-content:center;gap:10px}.arrival-actions button{flex:1}.arrival .link{margin-top:12px}
+#guide{position:fixed;inset:0;margin:0;padding:0;border:0;border-radius:0;width:100%;height:100%;max-width:none;max-height:none;background:transparent;box-shadow:none;overflow:hidden}
+#guide::backdrop{background:transparent}
+#guide-ring{position:absolute;border:2px solid white;border-radius:14px;box-shadow:0 0 0 200vmax #000b;transition:top .36s,left .36s,width .36s,height .36s}
+#guide-ring:after{content:"";position:absolute;inset:-2px;border:1px solid white;border-radius:inherit;pointer-events:none;animation:guideGlow 2s ease-out infinite}
+@keyframes guideGlow{from{opacity:.7;transform:scale(1)}to{opacity:0;transform:scale(1.025)}}
+#guide-card{position:absolute;width:min(370px,calc(100% - 16px));max-height:calc(100% - 16px);overflow:auto;padding:20px;border:1px solid #777;border-radius:15px;background:#202020;box-shadow:0 8px 32px #0008;transition:top .36s,left .36s}
+#guide-card h2{margin:12px 0 6px;font-size:23px}.guide-progress{height:3px;background:#484848;margin-top:10px}.guide-progress i{display:block;height:100%;background:white;transition:width .3s}.guide-actions{display:flex;gap:7px;flex-wrap:wrap}.guide-actions .link{margin-right:auto}.guide-actions button:disabled{opacity:.35}
+@media(prefers-reduced-motion:reduce){#guide-ring,#guide-card,.guide-progress i{transition:none}#guide-ring:after{animation:none}}
+.room-list{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}.room-list [aria-pressed=true]{background:#eee;color:#161616;font-weight:bold}
+.chat-layout{display:grid;grid-template-columns:clamp(140px,17vw,225px) minmax(0,1fr);height:calc(100dvh - 110px);min-height:320px;background:#090909;border:1px solid #303030;border-radius:14px;overflow:hidden}
+.channel-list{background:#111;border-right:1px solid #303030;padding:18px 10px}.channel-list h2{font-size:19px;margin:0 8px 26px}.channel-list small{margin-left:10px;color:#aaa}
+.channel-list .room-list{display:grid;gap:3px;margin:8px 0}.room-list button{text-align:left;color:#aaa;background:transparent;padding:9px 10px}.room-list button::before{content:'#';color:#969696;margin-right:9px}.channel-list button[aria-pressed=true]{background:#292929;color:white}
+.chat-column{display:grid;grid-template-rows:auto minmax(0,1fr) auto;min-width:0;min-height:0}.channel-heading{display:flex;align-items:center;gap:14px;border-bottom:1px solid #282828;padding:16px}.channel-heading small{color:#aaa;letter-spacing:.04em}
+.chat-column #messages{min-height:0;max-height:none;overflow:auto;padding:16px}.chat-post{margin-bottom:14px}.sender{display:flex;align-items:center;gap:8px;font-size:14px}.sender span{display:grid;place-items:center;border-radius:50%;background:#343434;color:white;width:27px;height:27px}.sender time{font-size:11px;color:#aaa}.chat-post p{padding:10px 13px;border:1px solid #303030;border-radius:13px 13px 13px 3px;margin:5px 0 0;max-width:760px;color:#eee;white-space:pre-wrap}.empty-feed{font-size:14px}
+.chat-column #chat{display:flex;gap:8px;margin:10px;padding:6px;background:#191919;border:1px solid #393939;border-radius:14px}.chat-column #msg{margin:0;border:0;min-width:0;background:transparent}.chat-column #chat button{align-self:center}
+body:is([data-side=top],[data-side=bottom]) .chat-layout{height:calc(100dvh - 175px)}
+@media(max-width:720px){.chat-layout{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}.channel-list{border-right:0;border-bottom:1px solid #333;padding:10px}.channel-list h2{display:none}.channel-list .room-list{display:flex;gap:2px;margin:4px 0 0}.room-list button{font-size:12px;padding:5px}.room-list button::before{margin-right:2px}}
+
+body:has(.chat-layout){overflow:hidden;background:#090909}
+body:has(.chat-layout)::before,body:has(.chat-layout)::after,main:has(.chat-layout)>.brand{display:none}
+body[data-side] main:has(.chat-layout){position:fixed;inset:0;max-width:none;margin:0;padding:0}
+body[data-side=left] main:has(.chat-layout){left:var(--rail)}
+body[data-side=right] main:has(.chat-layout){right:var(--rail)}
+body[data-side=top] main:has(.chat-layout){top:78px}
+body[data-side=bottom] main:has(.chat-layout){bottom:78px}
+main:has(.chat-layout) #page,body[data-side] #page>.chat-layout{height:100%;min-height:0}
+#page>.chat-layout{border:none;border-radius:0}
+@media(max-width:720px){.channel-list h2{display:block;font-size:16px;margin:0 8px 8px}}
+
+.channel-list{display:flex;flex-direction:column}.add-friend{margin-top:auto;text-align:left}.room-list{flex:none}
+#dm{position:fixed;inset:0;width:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;border-radius:0;background:#090909;color:#eee}
+#dm [hidden]{display:none!important}.dm-layout{display:grid;grid-template-columns:clamp(175px,21vw,280px) minmax(0,1fr);height:100%}.dm-layout aside{border-right:1px solid #333;display:flex;flex-direction:column;gap:10px;padding:10px}.dm-layout button,#dm-search button{background:#202020}.dm-layout aside p,.dm-empty p{font-size:14px;color:#aaa}.dm-thread{display:flex;min-height:0;min-width:0;flex-direction:column}.dm-thread header{height:auto;min-height:55px;padding:10px 16px}#dm-friends,#dm-feed{flex:1;overflow:auto}#dm-friends button,#dm-results button{display:block;margin:5px 0;width:100%;text-align:left}.dm-empty{height:100%;display:grid;align-content:center;text-align:center;gap:8px}#dm-feed article{margin:14px;padding:12px;border:1px solid #333;border-radius:12px;overflow-wrap:anywhere}#dm-feed img,#dm video{display:block;max-height:27vh;max-width:100%;border-radius:8px}#dm-feed audio{max-width:100%}#dm-status,#dm-compose,#dm-capture,#dm-callbox{padding:8px 14px}.dm-write{display:flex;gap:8px;margin:6px 0}.dm-write input{margin:0;min-width:0}#dm-search{position:absolute;top:12%;left:50%;transform:translateX(-50%);width:min(460px,94%);background:#181818;border:1px solid #555;border-radius:12px;padding:18px;box-shadow:0 14px 80px #000}#dm-results{max-height:45vh;overflow:auto}#dm-find{text-align:left}
+@media(max-width:600px){.dm-layout{grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}.dm-layout aside{flex-direction:row;flex-wrap:wrap;border-bottom:1px solid #333}.dm-layout aside button{font-size:12px;padding:7px}#dm-friends{order:3;flex-basis:100%;max-height:70px}.dm-thread header{flex-wrap:wrap}.add-friend{align-self:flex-start}}
+
+.dm-icon{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.65;stroke-linecap:round;stroke-linejoin:round}
+#dm button,.channel-list .add-friend{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:30px;padding:5px 9px;border:1px solid transparent;border-radius:7px;background:transparent;color:#c9c9c9;font-weight:500;font-family:inherit;font-size:13px;line-height:1.25;transition:background .16s,color .16s,border-color .16s,transform .16s}
+#dm button:hover,.channel-list .add-friend:hover{background:#262626;color:white;outline:none;filter:none;transform:translateY(-1px)}
+#dm button:active,.channel-list .add-friend:active{transform:scale(.96)}
+#dm button:focus-visible,.channel-list .add-friend:focus-visible{outline:2px solid #ddd;outline-offset:2px}
+#dm .dm-icon,.add-friend .dm-icon{transition:transform .18s}
+#dm button:hover .dm-icon,.add-friend:hover .dm-icon{transform:translateY(-1px)}
+#dm #dm-find{justify-content:flex-start;text-align:left;border-color:#383838;background:#151515}
+#dm #dm-friends button,#dm #dm-results button,.channel-list .add-friend{justify-content:flex-start}
+#dm .dm-thread header{min-height:48px;padding-block:6px}
+#dm .dm-write{align-items:center;border:1px solid #383838;border-radius:10px;background:#151515;padding:3px 5px}
+#dm .dm-write:focus-within{border-color:#777}
+#dm .dm-write input{background:transparent;border:0;padding:8px;outline:none}
+#dm .dm-write button,#dm #dm-answer{background:#e6e6e6;color:#161616}
+#dm .dm-write button:hover{background:white}
+#dm-search:not([hidden]),#dm-capture:not([hidden]),#dm-callbox:not([hidden]){animation:dmReveal .18s ease-out}
+@keyframes dmReveal{from{opacity:0;translate:0 5px}to{opacity:1;translate:0 0}}
+@media(prefers-reduced-motion:reduce){#dm button,.add-friend,#dm .dm-icon,.add-friend .dm-icon{transition:none!important;transform:none!important}#dm-search,#dm-callbox,#dm-capture{animation:none!important}}
+#dm #dm-self{width:92px;max-height:72px;float:right;margin:5px;object-fit:cover}#dm #dm-self[hidden]{display:none}</style></head><body><nav aria-label="Pages"><div class="logo"><img class="sidebar-logo" alt="NOTMINE4REAL" src="data:image/jpeg;base64,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"></div></nav><main><div class="brand">NOTMINE4REAL</div><div id="page"></div></main><dialog id="dm" aria-label="Direct Messages"><div class="dm-layout"><aside><button id="dm-find"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><span>Find or start a conversation</span></button><div id="dm-friends"></div><button onclick="document.querySelector('#dm').close()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m10 5-7 7 7 7M4 12h17"/></svg><span>Back to rooms</span></button></aside><section class="dm-thread"><header><strong id="dm-peer"></strong><div id="dm-calls" hidden><button onclick="dial(false)"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m5 3 4 1 1 5-3 2a14 14 0 0 0 6 6l2-3 5 1 1 4q0 3-4 2C9 19 5 15 3 7q-1-4 2-4z"/></svg><span>Voice call</span></button> <button onclick="dial(true)"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="6" width="12" height="12" rx="3"/><path d="m15 10 6-3v10l-6-3"/></svg><span>Video call</span></button></div></header><div id="dm-feed"></div><div id="dm-status" role="status"></div><div id="dm-callbox" hidden><span id="dm-call-label"></span> <button id="dm-answer" onclick="acceptCall()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></svg><span>Accept</span></button> <button onclick="finishCall()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 16v-4q9-8 18 0v4h-5v-3q-4-2-8 0v3z"/></svg><span>End call</span></button><video id="dm-self" hidden muted autoplay playsinline aria-label="Your camera"></video><video id="dm-remote" autoplay playsinline controls></video></div><div id="dm-capture" hidden><video id="dm-preview" muted autoplay playsinline></video><button id="dm-capture-action"></button> <button onclick="stopCapture()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg><span>Cancel</span></button></div><form id="dm-compose" hidden><div><button type="button" onclick="document.querySelector('#dm-photo').click()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="1.5"/><path d="m3 17 5-5 4 4 4-6 5 6"/></svg><span>Photo</span></button><input id="dm-photo" type="file" accept="image/*" hidden><button type="button" onclick="capture('snap')"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 7h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="13" r="4"/></svg><span>Snap</span></button><button type="button" onclick="capture('voice')"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 11a7 7 0 0 0 14 0m-7 7v4m-4 0h8"/></svg><span>Voice message</span></button></div><div class="dm-write"><input id="dm-text" aria-label="Direct message" placeholder="Message…" maxlength="2000"><button><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m3 10 18-7-6 18-4-8-8-3zm8 3L21 3"/></svg><span>Send</span></button></div></form></section></div><section id="dm-search" hidden><div class="row"><h2>Find a friend</h2><button onclick="document.querySelector('#dm-search').hidden=true"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg><span>Close</span></button></div><label>Search players by display name<input id="dm-query" type="search" autocomplete="off"></label><div id="dm-results"></div></section></dialog><dialog id="guide" aria-labelledby="guide-title" aria-describedby="guide-copy"><div id="guide-ring" aria-hidden="true"></div><section id="guide-card"><small id="guide-step"></small><div class="guide-progress"><i id="guide-fill"></i></div><h2 id="guide-title"></h2><p id="guide-copy"></p><div class="guide-actions"><button class="link" onclick="endTour(false)">Skip tour</button><button id="guide-back">Back</button><button class="primary" id="guide-next">Next →</button></div></section></dialog><dialog id="modal"></dialog><script>
+const $=s=>document.querySelector(s),pages=['Main hub','Games','Chat room','Settings','Profile settings'],icons=['<path d="m3 10 9-7 9 7v10h-6v-7H9v7H3z"/>','<path d="M7 7h10q3 0 4 9t-6-1H9q-8 9-6 0t4-8z"/><path d="M6 11h4m-2-2v4m7-2h.1m3 2h.1"/>','<path d="M3 4h18v13H9l-6 4z"/><path d="M7 9h10"/>','<path d="M3 7h7m4 0h7M3 17h11m4 0h3"/><circle cx="12" cy="7" r="2"/><circle cx="16" cy="17" r="2"/>','<circle cx="12" cy="8" r="4"/><path d="M4 21q0-10 8-10t8 10"/>'],games=[],genres=[];
+let mem={},persistent=true;function read(k,d){try{return JSON.parse(localStorage.getItem('afterglow.'+k))??mem[k]??d}catch{return mem[k]??d}}function save(k,v){mem[k]=v;try{localStorage.setItem('afterglow.'+k,JSON.stringify(v))}catch{persistent=false}}
+let user='',profiles=()=>read('firebaseProfiles',{}),profile=()=>profiles()[user],current=0;const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));document.body.dataset.side=read('side','left');
+['Home','Games','Chat','Settings','Profile'].forEach((p,i)=>{let b=document.createElement('button');b.title=p;b.setAttribute('aria-label',p);b.innerHTML='<svg viewBox="0 0 24 24">'+icons[i]+'</svg><span>'+p+'</span>';b.onclick=()=>show(i);$('nav').append(b)});
+const covers=new Map();
+function art(canvas,index){
+ let cover=covers.get(index);
+ if(!cover){cover=document.createElement("canvas");drawCover(cover,index);covers.set(index,cover)}
+ canvas.width=cover.width;canvas.height=cover.height;canvas.getContext("2d").drawImage(cover,0,0)
+}
+function drawCover(c,k){if(k>3)return classicCover(c,k);let w=c.width=400,h=c.height=130,x=c.getContext('2d'),col=[['#424242','#acacac','#343434'],['#222222','#979797','#202020'],['#2d2d2d','#a0a0a0','#262626'],['#333333','#adadad','#2c2c2c']][k],g=x.createLinearGradient(0,0,0,h);g.addColorStop(0,col[0]);g.addColorStop(1,col[1]);x.fillStyle=g;x.fillRect(0,0,w,h);for(let i=1;i<68;i++){x.fillStyle='#e8e8e8';x.fillRect((i*83)%400,(i*i*7)%74,1,1)}let sun=k===0?302:230;x.fillStyle=k===2?'#ebebeb':'#cfcfcf';for(let y=-29;y<30;y++){let a=Math.floor(Math.sqrt(900-y*y));if(k!==2&&y>5&&y%5===0)continue;x.fillRect(sun-a,47+y,a*2,1)}for(let j=0;j<3;j++){x.fillStyle=[col[2]+'91',col[2],'#1a1a1a'][j];for(let i=0;i<w;i+=2){let y=Math.round(79+j*15+13*Math.sin(i*.031+j*3)+7*Math.sin(i*.081+j));x.fillRect(i,y,2,h-y)}}if(k===1){x.fillStyle='#575757';x.beginPath();x.moveTo(208,92);x.lineTo(132,130);x.lineTo(285,130);x.closePath();x.fill();x.fillStyle='#c6c6c6';for(let i=0;i<4;i++)x.fillRect(208,95+i*i*3,2+i,2+i)}if(k===3){for(let i=0;i<9;i++){x.fillStyle=['#ababab','#bababa','#e3e3e3'][i%3];x.save();x.translate(65+i*33,28+(i%3)*16);x.rotate(.785);x.fillRect(-5,-5,10,10);x.restore()}}}
+
+function classicCover(canvas,k){
+ const ctx=canvas.getContext('2d');canvas.width=400;canvas.height=130;
+ ctx.fillStyle='#202020';ctx.fillRect(0,0,400,130);
+ for(let x=4;x<400;x+=12)for(let y=4;y<130;y+=12){ctx.fillStyle='#515151';ctx.fillRect(x,y,1,1)}
+ ctx.fillStyle='#ddd';
+ if(k===6){ctx.font='bold 40px monospace';ctx.textAlign='center';ctx.fillText('ROPULSE GAMES',200,80);return}if(k===4){for(const [a,b,n,m] of [[60,72,99,12],[147,36,12,46],[148,36,95,12],[231,37,12,32],[231,58,46,12],[302,42,10,10]])ctx.fillRect(a,b,n,m)}
+ else{ctx.fillRect(88,28,8,42);ctx.fillRect(311,68,8,42);for(let y=0;y<130;y+=15)ctx.fillRect(199,y,2,7);ctx.fillRect(258,48,9,9)}
+}
+let slide=0,carouselTimer,paused=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const imports=[
+ {
+  "name": "Babel Tower",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_18397f960d16bf07776777fa0de4d06d.html",
+  "image": "https://cdn8.gametop.com/online/tower-of-babel/m0.jpg"
+ },
+ {
+  "name": "Baby chicco adventure",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_2876263a0039e4ef1045db81a81a2665.html",
+  "image": "https://static.keygames.com/3/116063/102042/672x378/baby-chicco-adventures.webp"
+ },
+ {
+  "name": "Baby sniper in vietnam",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_e189e72667ac6e5f629a5162c34eef3d.html",
+  "image": "https://th.bing.com/th/id/OIP.XSaqfB4KKLQ6JPoeYUiVOAHaFj?w=216&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3"
+ },
+ {
+  "name": "Backrooms",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_98fa9ab037c8eed638a9a06dadf4c09c.html",
+  "image": "https://img.crazygames-poki.com/f6a07864bd29db728552eeacd25d5178.jpg"
+ },
+ {
+  "name": "Backrooms 2d",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_912251f5c6c43baad18f717111160277.html",
+  "image": "https://th.bing.com/th/id/OIP.pQd45LwozToEP8FA2w4XlAHaEJ?w=281&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3"
+ },
+ {
+  "name": "Bacon may die",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_0404564ccb48dc84c3ca133152b99b0b.html",
+  "image": "https://tse3.mm.bing.net/th/id/OIP.0ns6_qfk6f6ldN0BM8FE6wHaDt?rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Bad bodyguards",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_7cca25aad01ab4c5a0d2996a1749d4cd.html",
+  "image": "https://i.ytimg.com/vi/I8UHCBwcRuA/maxresdefault.jpg"
+ },
+ {
+  "name": "Bad monday simulator",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_c6cbff115af23730347234b000bf10e6.html",
+  "image": "https://cdn.mobygames.com/covers/17610298-bad-monday-simulator-browser-front-cover.png"
+ },
+ {
+  "name": "Bad parenting",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_0ed710982a10cd56b474252d5017db7f.html",
+  "image": "https://afamilycdn.com/150157425591193600/2024/10/30/46254962988999622667100653848885436163232460n-17302218260721858693219-1730258259201-17302582593321396140242.png"
+ },
+ {
+  "name": "Bad piggies",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_60cc1d59d3576edec404053e48b15610.html",
+  "image": "https://images2.alphacoders.com/593/593701.jpg"
+ },
+ {
+  "name": "Bad time",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_3e722c43f5df45f40886bcf783d04a6b.html",
+  "image": "https://th.bing.com/th/id/OIP.evSdFXngG_GioKIX0Cig1gAAAA?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Baldis basics",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_71b56e8afb366e16b35005ecf06804df.html",
+  "image": "https://img.crazygames-poki.com/c5322f03e8ef0593038fd7b9eca6297b.jpg"
+ },
+ {
+  "name": "Baldis basics ultra decomp",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_ffa8d5c3c20954e3bbf8b6f0c07a6905.html",
+  "image": "https://i.ytimg.com/vi/xZO6W2XrgcI/maxresdefault.jpg"
+ },
+ {
+  "name": "Bank robber 2",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_8d0f426860166d8831b517c22fdfaea7.html",
+  "image": "https://i.ytimg.com/vi/6t484Sym5Ic/maxresdefault.jpg"
+ },
+ {
+  "name": "Baseball bros",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_c4981e24b86c333d69732a8cabaa0458.html",
+  "image": "https://tse2.mm.bing.net/th/id/OIP.pdNP_hfo5qJiH77BSfahXgHaEC?rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Barry has a secret",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_1fb6b4f8904479e18f6e44d4a02694f8.html",
+  "image": "https://tse3.mm.bing.net/th/id/OIP.NPaWnEe8GoG1OcfighCAcgHaF_?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Basket slam dunk",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_00e189e93ddc288c97d20bd9d77e0c50.html",
+  "image": "https://static.seeles.ai/media/prod/game/cover/2976_6d33167f-c24c-410e-9890-7f0b230c7d5f.jpg"
+ },
+ {
+  "name": "BasketballFrVr",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_bf0fb180ae75959d3071479629189589.html",
+  "image": "https://cdn.browsercam.com/com.frvr.basketball-header.png"
+ },
+ {
+  "name": "Basketball legends 2020",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_aee0268269cff0a6aa18197af099f077.html",
+  "image": "https://tse3.mm.bing.net/th/id/OIP.-byaakwC8Q96yjbSSMwE9QHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Basketball stars",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_5a0afb889ab52bc8762338ea8f77ba89.html",
+  "image": "https://tse2.mm.bing.net/th/id/OIP.6CjN0RfT4DMNYgd36IpUeQHaE8?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Basketball superstars",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_1dfaafc81dba9a1db20e7228fd404ce7.html",
+  "image": "https://sportsgames.gitlab.io/assets/upload/crazygames/jpg/basketball-superstars.jpg"
+ },
+ {
+  "name": "Battle karts",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_85e9e07ef518c5b096097efcf5a1b5e3.html",
+  "image": "https://tse1.mm.bing.net/th/id/OIP.Vc5q29ipZcq-8TzNB9yIsAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Battle simulator",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_78032239640b032ec40f982697114565.html",
+  "image": "https://m.media-amazon.com/images/I/B1LpIXQ3VjS._SL500_UX1920_CR0%2C0%2C1920%2C1080_.png"
+ },
+ {
+  "name": "Beach boxing simulator",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_5680444c7da08af187f71e98e38f5e95.html",
+  "image": "https://gogamego.io/wp-content/uploads/2026/01/Beach-Boxing-Simulator.webp"
+ },
+ {
+  "name": "Bearsus",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_a2da5fd57eebc42343f073b6562df0b3.html",
+  "image": "https://superbear-adventure.com/wp-content/uploads/2025/11/Bearsus.webp"
+ },
+ {
+  "name": "Bergentruck 201x",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_bc388620e07b110ac02b893ffd455b6c.html",
+  "image": "https://iamchristians.github.io/assets/img/games/bergentruck201x.webp"
+ },
+ {
+  "name": "BFDIA 5B",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_f5b22cedca299913fa616f920b125d91.html",
+  "image": "https://img.itch.zone/aW1nLzE4OTUwNDcyLnBuZw==/original/RrflAp.png"
+ },
+ {
+  "name": "Big flappy tower tiny square",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_9ec2f6eea6155b0d5c8349c0317ec359.html",
+  "image": "https://tse2.mm.bing.net/th/id/OIP.S8C_Vb23mfLCowYGPLg-IgHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Bit life",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_fdd3accf5996a8beb9d8b9f2164c708b.html",
+  "image": "https://progameguides.com/wp-content/uploads/2022/03/featured-bitlife-audition.jpg?fit=1200%2C675"
+ },
+ {
+  "name": "Bit planes",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_535b9333e82c0be1e242f8af43629e41.html",
+  "image": "https://tse2.mm.bing.net/th/id/OIP.YY2llaECY9TWUKkxA8md4gHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Black Jack",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_eccc199d4e28ce888fcc3109b407f462.html",
+  "image": "https://tse2.mm.bing.net/th/id/OIP.UiM2stg9o_c-aQgLl55CoQHaD2?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Blastronaut",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_8bbad0f0b797cb22a3e13ce8ac986aeb.html",
+  "image": "https://gamefaqs.gamespot.com/a/box/9/6/1/770961_front.jpg"
+ },
+ {
+  "name": "Blaze drifter",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_357f9c6455578ed0cb7ea54aad282e5a.html",
+  "image": "https://escaperoad.org/data/image/game/blaze-drifter/blaze-drifter1.png"
+ },
+ {
+  "name": "Blight borne",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_02e233fadac9f357effc4fad76e7ca64.html",
+  "image": "https://happy-wheels.co/data/image/game/blightborne.png"
+ },
+ {
+  "name": "Block the pig",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_91f9b1a8f82914d550480a808e18ecbf.html",
+  "image": "https://tse4.mm.bing.net/th/id/OIP.lLWQtxur_cSbzSQIUID0rwHaDn?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Block demolition derby",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_33282609c09e64f1724e430bf498fec5.html",
+  "image": "https://www.crazygame.info/thumbs/blocky-demolition-derby_1.webp"
+ },
+ {
+  "name": "Blocky snakes",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_403368dcf962a456feef33305ea909ee.html",
+  "image": "https://static.seeles.ai/media/prod/game/cover/2488_ae810201-40dc-49cb-a4c0-662ca02922ae.jpg"
+ },
+ {
+  "name": "Blood tournament",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_68bc2776f0712cc6fbe4cf3a8de40669.html",
+  "image": "https://th.bing.com/th/id/R.db6aefadc282004d0b72306d0241fd42?rik=FnkLbQqUVz0gHg&pid=ImgRaw&r=0"
+ },
+ {
+  "name": "Bounce masters",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_9699bb65c1a49b773d5dfed3fbf4e3d6.html",
+  "image": "https://cdn1.epicgames.com/spt-assets/c0ee39442aff4a9198e0b1df04087e8d/bouncemasters-1ek3v.png?resize=1&w=480&h=270&quality=medium"
+ },
+ {
+  "name": "Bouncy motors",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_f8767e4d8d373cdfd0074b3fadfc0af1.html",
+  "image": "https://tse4.mm.bing.net/th/id/OIP.0MXF1rMNie1u-uV0gIEA_AHaD3?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Bounce back",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_0cf4251fd90b562a90e69a8a32d5a9a7.html",
+  "image": "https://tse1.mm.bing.net/th/id/OIP.BcIIjqCDVdgVjXdl4q3p-QAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Bow master",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_da3b50634cfb3eba6424745d89ef04c2.html",
+  "image": "https://megacool.medal.tv/blog/content/images/size/w2000/2019/03/maxresdefault.jpg"
+ },
+ {
+  "name": "Brawl stars",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_f6ed15ec9fa51cff30b6217666502407.html",
+  "image": "https://wallpapers.com/images/hd/damage-dealer-class-brawl-stars-4k-juu65bsvlox87841.jpg"
+ },
+ {
+  "name": "Crossy road",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_094855848ee2a5b8aae9f3ed9fa2dd4a.html",
+  "image": "https://gamerforfun.com/wp-content/uploads/2023/05/Secret-Characters-In-Crossy-Road-1536x864.png"
+ },
+ {
+  "name": "Brotato",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_89ae401139980b1d8397cb2b71516375.html",
+  "image": "https://tse2.mm.bing.net/th/id/OIP.xVtBkL50gNpGXiJwcCV27QHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Bunny land",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_ce19a44395e14b4485b16669158907ae.html",
+  "image": "https://cdn.gamingcloud.com/img/general/games/200x150/32833.jpg"
+ },
+ {
+  "name": "Burger&Frights",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_420bae10afbef55676c64d487a2c3560.html",
+  "image": "https://i.ytimg.com/vi/7OPppVbHb1Q/maxresdefault.jpg"
+ },
+ {
+  "name": "Caby bara clicker",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_cd411c683061919e4b717cfd02874cad.html",
+  "image": "https://images.crazygames.com/games/capybara-clicker/cover-1678290947532.png?auto=format%2Ccompress&q=65&cs=strip&ch=DPR&fit=crop"
+ },
+ {
+  "name": "Call of Battle",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_d7f6abe9a577354270774909403a1240.html",
+  "image": "https://r2.fizzerz.com/game-source/call-battle/icon.webp"
+ },
+ {
+  "name": "Captcha wars",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_38f4bb5b01e13a4a193f8051619ed2bc.html",
+  "image": "https://tse4.mm.bing.net/th/id/OIP.6oCXYtEVL8oA1Z1a-HWtUAHaD3?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Car crash 3",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_9f236721bfdfaf4d3fab155a88e8e501.html",
+  "image": "https://tse2.mm.bing.net/th/id/OIP.oKsrcF0aSAhgs0djueS_eAHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Car drawing",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_5d2333369501409d61572514e3dca7a6.html",
+  "image": "https://static.seeles.ai/media/prod/game/cover/158_be7edf55-071b-4cc5-af67-8a19ed217d8d.jpg"
+ },
+ {
+  "name": "Car king arena",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_1255378d4a6c1f98af13d6307dee47bc.html",
+  "image": "https://cdn-0001.qstv.on.epicgames.com/IURMjIbcfgZHsdgbzL/image/landscape_comp.jpeg"
+ },
+ {
+  "name": "Car ramp VS police chase",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_5edbf5d32eb231418cd4cc665989c2a2.html",
+  "image": "https://snowrider3d.com/cache/data/image/game/ramp-car-vs-police-chase/ramp-car-vs-police-chase-m200x200.webp"
+ },
+ {
+  "name": "Cartoon network table tennis ultimate",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_61597319b5d3a85fce9c76aaa065c600.html",
+  "image": "https://i.ytimg.com/vi/lm73otGqnso/maxresdefault.jpg"
+ },
+ {
+  "name": "CaseOh’s basics in eating and fast food",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_fcd01c5b4d58db65fa8ac59d19b822a8.html",
+  "image": "https://i.ytimg.com/vi/86HM3bSIi_Y/maxresdefault.jpg"
+ },
+ {
+  "name": "Castle wars modern",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_05492b949e203da83ae3acb9a0dfb84b.html",
+  "image": "https://images.crazygames.com/castel-wars-modern/20230522022931/castel-wars-modern-cover?auto=format%2Ccompress&q=45&cs=strip&ch=DPR&w=1200&h=630&fit=crop"
+ },
+ {
+  "name": "Cat mario",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_05492b949e203da83ae3acb9a0dfb84b.html",
+  "image": "https://th.bing.com/th/id/OIP.MTZnwNsHCSWliDQT82y1HAAAAA?w=240&h=180&c=7&r=0&o=7&dpr=1.1&pid=1.7&rm=3"
+ },
+ {
+  "name": "Cats love cake 2",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_158400e0d730c733f0cdc746e096920a.html",
+  "image": "https://gogamego.io/wp-content/uploads/2026/02/Cats-love-cake-2.webp"
+ },
+ {
+  "name": "Cheese chompers 3d",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_89a5f64f44970d6b23c6c327bb5e588b.html",
+  "image": "https://tse1.mm.bing.net/th/id/OIP.c7ZIE8fucRhPvD2TJYDV_wHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Cheese is the reason",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_682cb7ee69264eb8bd12f6710225afe2.html",
+  "image": "https://game.heygames.org/20250604/cheese-is-the-reason.jpg"
+ },
+ {
+  "name": "Cheese rolling",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_6f0f24a1ba245ab041d1ff8c80a77946.html",
+  "image": "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3809440/efad0cc7f89c9205e838c1390d3da9193d5c8538/capsule_616x353.jpg?t=1756503350"
+ },
+ {
+  "name": "Chicken scream",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_9223d293d58e33cf5d3e93f869812752.html",
+  "image": "https://tse2.mm.bing.net/th/id/OIP.UFRvm8ZFXJEg1jH_TTm_CQHaD4?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Clash of viking",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_bce33fe3e3a92651bd435c3a2b537b3d.html",
+  "image": "https://tse1.mm.bing.net/th/id/OIP.MTWgnyvooKdVgK9iw8-tIwHaD4?rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Cleanup io",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_22efca9a9d59ac4a1ebe246037936fd5.html",
+  "image": "https://tse3.mm.bing.net/th/id/OIP.QhJ88WEVNhF8n9VZEWzAmwHaEK?rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Cluster rush",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_5ba3cc4a3754b6501c3008fccc0daf22.html",
+  "image": "https://tse1.mm.bing.net/th/id/OIP.2OrmSXyvRXDXDezrzHj7XwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Cell to singularity",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_83fea0864032ac159339a616a1bf9e16.html",
+  "image": "https://tse1.mm.bing.net/th/id/OIP.DKDkago5IzDTKt6AxYFiQwHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Cookie clicker",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_5f0e23c9fd2c168e2e9907e13e2734eb.html",
+  "image": "https://tse2.mm.bing.net/th/id/OIP.Vn9844_myLgUwM3rDaddFwHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "Crank it",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_3229e00d2475761909c9401423f30429.html",
+  "image": "https://i.ytimg.com/vi/ig1o0xBGT_Y/maxresdefault.jpg"
+ },
+ {
+  "name": "Crazy cars",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_d8a8cbb51182e7819faa9efc6ddd17fc.html",
+  "image": "https://minigamesville.com/wp-content/uploads/2025/08/Crazy-Cars-1.png"
+ },
+ {
+  "name": "Crazy motorcycle",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_2332d8760ae403bed4904bc512e48864.html",
+  "image": "https://tse3.mm.bing.net/th/id/OIP.sVOku8N2vgaYoLUraZHVxQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+ },
+ {
+  "name": "C.S 1.6",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_192075af05c62f7a9f78aac2d93d8870.html",
+  "image": "https://wallpaperaccess.com/full/3521303.jpg"
+ },
+ {
+  "name": "Csgo Clicker",
+  "url": "https://cookjessie04-wixsite-com.filesusr.com/html/660bb0_c0b30c03a11d7ccf6e4044c41811b873.html",
+  "image": "https://sprunkiclicker.io/data/image/game/csgo-clicker.png"
+ }
+];
+const gameIdOffset=7;
+for(const item of imports){games.push(item.name);genres.push("Web game")}
+const featuredGames=games.slice(0,5);
+function carousel(){
+ const order=[featuredGames.length-1,...featuredGames.keys(),0];
+ const posters=order.map((i,pos)=>'<button class="poster" data-index="'+i+'" aria-label="Play '+games[i]+'" onclick="play('+i+')">'+libraryArt(i)+'<span><small>'+genres[i]+'</small><strong>'+games[i]+'</strong></span></button>').join('');
+ return '<section class="orbit" aria-label="Featured games"><div class="track">'+posters+'</div></section>'
+}
+let trackPosition=1;
+function rotate(step){
+ clearTimeout(carouselTimer);
+ const track=$('.track');if(!track)return;
+ function position(animate){
+  track.classList.toggle('moving',animate);
+  track.style.transform='translateX(calc('+(-trackPosition*86)+'% - '+(trackPosition*12)+'px))';
+ }
+ if(!step||trackPosition===0||trackPosition===featuredGames.length+1){
+  trackPosition=slide+1;position(false);void track.offsetWidth;
+ }
+ trackPosition+=step;slide=(slide+step+featuredGames.length)%featuredGames.length;position(Boolean(step));
+ track.ontransitionend=e=>{if(e.target===track&&(trackPosition===0||trackPosition===featuredGames.length+1)){trackPosition=slide+1;position(false)}};
+ track.querySelectorAll('.poster').forEach((el,i)=>el.tabIndex=i===slide+1?0:-1);
+
+ if(!paused&&!document.hidden)carouselTimer=setTimeout(()=>rotate(1),4800)
+}
+document.addEventListener('visibilitychange',()=>{
+ clearTimeout(carouselTimer);
+ if(!document.hidden&&$('.track'))rotate(0)
+});
+function libraryArt(i){
+ const item=imports[i];
+ if(!item)return '<canvas data-art="'+(i+1)+'"></canvas>';
+ return item.image?'<img class="game-cover" alt="" loading="lazy" decoding="async" src="'+esc(item.image)+'">':'';
+}
+let libraryQuery='',libraryLetter='All';
+const firstLetter=name=>/^[A-Z]/i.test(name.trim())?name.trim()[0].toUpperCase():'#';
+function matchesLibrary(name,query,letter){
+ return (letter==='All'||firstLetter(name)===letter)&&name.toLowerCase().includes(query.trim().toLowerCase())
+}
+function libraryPage(){
+ const available=new Set(games.map(firstLetter));
+ const letters=['All',...'ABCDEFGHIJKLMNOPQRSTUVWXYZ'];if(available.has('#'))letters.push('#');
+ const buttons=letters.map(letter=>'<button type="button" data-letter="'+letter+'" aria-pressed="'+(libraryLetter===letter)+'" '+(letter==='All'||available.has(letter)?'':'disabled')+'>'+letter+'</button>').join('');
+ return '<h2 class="head">Game library</h2><div class="library-tools"><label for="library-search">Search games</label><input type="search" id="library-search" placeholder="Search by title" value="'+esc(libraryQuery)+'"><div class="letters" role="group" aria-label="Filter by first letter">'+buttons+'</div></div><p id="game-count" role="status"></p><div class="grid" id="library-results"></div>'
+}
+function updateLibrary(){
+ const results=games.flatMap((name,i)=>matchesLibrary(name,libraryQuery,libraryLetter)?['<button class="card" onclick="play('+i+')">'+libraryArt(i)+'<div class="info"><h3>'+esc(name)+'</h3></div></button>']:[]);
+ $('#library-results').innerHTML=results.join('');
+ $('#game-count').textContent=results.length?results.length+(results.length===1?' game':' games'):'No matching games. Try another title or letter.';
+}
+function bindLibrary(){
+ $('#library-search').oninput=e=>{libraryQuery=e.target.value;updateLibrary()};
+ $('.letters').onclick=e=>{const button=e.target.closest('[data-letter]');if(!button||button.disabled)return;libraryLetter=button.dataset.letter;for(const item of $('.letters').children)item.setAttribute('aria-pressed',String(item===button));updateLibrary()};
+ updateLibrary()
+}
+
+function show(i,preview=false){if(i===2&&!profile()&&!preview)return auth(true,2);stopRoom();clearTimeout(carouselTimer);current=i;document.querySelectorAll('nav button').forEach((b,j)=>b.classList.toggle('active',i===j));let content=[''+carousel()+'<button class="panel row chat-entry" onclick="show(2)"><span><small>Community</small><strong>Global chat room</strong></span><span>Enter room →</span></button><section class="panel" aria-labelledby="board-title"><h2 id="board-title">Board</h2><p class="board-message">Owner - Jessie<br>Hello welcome to the start of NOTMINE4REAL:ReUpdated.<br>Any updates, Events, News, or announcements will be posted here.<br><strong>Note - To use the chat room, you MUST register an account or log in</strong></p></section>',i===1?libraryPage():'',chatPage(),'<h2 class="head">Settings</h2><div class="panel"><label>Navigation position<select id="side">'+['left','top','right','bottom'].map(v=>'<option>'+v+'</option>').join('')+'</select></label><button onclick="tour(0)">Replay guided tour</button></div>','<h2 class="head">Profile settings</h2><div class="panel">'+(profile()?'<form id="edit"><label>Display name<input required maxlength="24" id="display" value="'+esc(profile().name)+'"></label><button class="primary">Save profile</button> <button type="button" onclick="logout()">Log out</button></form><p id="saved" role="status"></p>':'<p>Create an account or log in to join the chat.</p><button onclick="auth(true)">Sign up</button> <button onclick="auth(false)">Log in</button>')+'</div>'][i];$('#page').innerHTML=content;if(i===1)bindLibrary();document.querySelectorAll('[data-art]').forEach(c=>art(c,+c.dataset.art));if(i===0)rotate(0);if(i===2){messages();$("#chat").onsubmit=sendRoomMessage}if(i===3){$('#side').value=document.body.dataset.side;$('#side').onchange=e=>{document.body.dataset.side=e.target.value;save('side',e.target.value)}}if($('#edit'))$('#edit').onsubmit=async e=>{e.preventDefault();let n=$('#display').value.trim();if(!n)return;try{const api=window.arcadeAccounts;await api.rename(api.current(),n);syncPlayer(api.current());show(4);$('#saved').textContent='Profile saved.'}catch(error){if($('#saved'))$('#saved').textContent=accountError(error)}}}
+const roomNames=['Main','Games','Websites','School'];
+let activeRoom='Main';
+let unsubscribeRoom=null;
+function stopRoom(){unsubscribeRoom?.();unsubscribeRoom=null}
+async function sendRoomMessage(e){
+ e.preventDefault();if(!profile())return auth(false,2);
+ const input=$('#msg'),button=e.currentTarget.querySelector('button'),text=input.value.trim(),room=activeRoom,status=$('#room-status');
+ if(!text||button.disabled)return;
+ button.disabled=true;
+ try{await window.publicRooms.send(room,profile().name,text);if(activeRoom===room&&input.value.trim()===text)input.value=''}
+ catch(err){if(activeRoom===room)status.textContent='Send failed: '+err.message}
+ finally{button.disabled=false}
+}
+function chatPage(){return '<section class="chat-layout" aria-label="Chat rooms"><aside class="channel-list"><h2>NOTMINE4REAL</h2><small>MAIN</small><div class="room-list" role="group" aria-label="Channels">'+roomButtons()+'</div><button class="add-friend" onclick="openDM()"><svg class="dm-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20v-2a6 6 0 0 1 12 0v2m3-14v6m-3-3h6"/></svg>Add friend</button></aside><div class="chat-column"><div class="channel-heading"><h3 id="room-name"></h3><small id="room-status" role="status">Connecting…</small></div><div id="messages" role="log" aria-label="Room messages"></div><form id="chat"><input maxlength="400" required id="msg" aria-label="Message" autocomplete="off"><button class="primary">'+(profile()?'Send':'Log in')+'</button></form></div></section>'}
+function roomButtons(){return roomNames.map(name=>'<button type="button" data-room="'+name+'" aria-pressed="'+(name===activeRoom)+'" onclick="selectRoom(this.dataset.room)">'+name+'</button>').join('')}
+function selectRoom(name){
+ if(!roomNames.includes(name))return;
+ activeRoom=name;
+ document.querySelectorAll('[data-room]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.room===name)));
+ $('#msg').value='';messages()
+}
+function messages(){
+ const feed=$('#messages');if(!feed)return;
+ $('#room-name').textContent='# '+activeRoom;
+ $('#msg').placeholder='Message #'+activeRoom.toLowerCase()+'…';
+ stopRoom();feed.replaceChildren();
+ const status=$('#room-status'),room=activeRoom;
+ if(!profile()||!window.publicRooms){status.textContent='Sign in to connect';return}
+ status.textContent='Connecting…';
+ unsubscribeRoom=window.publicRooms.watch(room,(snapshot)=>{
+ if(!feed.isConnected||activeRoom!==room)return;
+ status.textContent=snapshot.metadata.hasPendingWrites?'Sending…':snapshot.metadata.fromCache?'Waiting for server…':'Live';
+ feed.innerHTML=snapshot.docs.slice().reverse().map(doc=>{
+ const data=doc.data({serverTimestamps:'estimate'}),m={name:data.name,t:data.text,time:data.createdAt?.toMillis()};
+  const time=m.time?new Date(m.time).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'}):'';
+  return '<article class="chat-post"><div class="sender"><span aria-hidden="true">'+esc(Array.from(m.name)[0]||'?')+'</span><strong>'+esc(m.name)+'</strong><time>'+esc(time)+'</time></div><p>'+esc(m.t)+'</p></article>'
+ }).join('')||'<p class="empty-feed">No messages yet. Say hello!</p>';
+ feed.scrollTop=feed.scrollHeight
+ },err=>{if(feed.isConnected&&room===activeRoom)status.textContent='Chat unavailable: '+err.message})
+}
+function dialog(html){let m=$('#modal');m.innerHTML=html;if(!m.open)m.showModal()}function closeBox(){$('#modal').close()}async function logout(){
+ try{await window.arcadeAccounts.logout();show(0)}catch(error){$('#saved').textContent=error.message}
+}
+function syncPlayer(account){
+ const next=account?'uid_'+account.uid:'';
+ if(user!==next&&$('#dm').open)$('#dm').close();
+ user=next;
+ if(account){const records=profiles();records[user]={name:account.displayName||records[user]?.name||'Player'};save('firebaseProfiles',records)}
+}
+function accountError(error){
+ return ({'auth/invalid-credential':'Check your email or username and password.','auth/email-already-in-use':'This email already has an account. Choose Log in.','auth/weak-password':'Choose a stronger password.','auth/network-request-failed':'Could not reach Firebase. Check your connection and try again.','auth/too-many-requests':'Too many attempts. Please try again later.'})[error.code]||error.message
+}
+const usernameDomain='players.notmine4reals.invalid';
+const validHandle=value=>/^[A-Za-z0-9_]{3,24}$/.test(value);
+const handleAddress=value=>value.toLowerCase()+'@'+usernameDomain;
+function auth(reg,destination=current){
+ dialog('<div class="row" style="justify-content:flex-end"><button aria-label="Close" onclick="closeBox()">×</button></div><h2>'+(reg?'Create your account':'Welcome back')+'</h2><form id="access">'+(reg?'<label>Username<input required id="handle" maxlength="24" autocomplete="nickname"></label>':'')+'<label>'+(reg?'Email<input type="email" id="email" placeholder="Optional" autocomplete="email">':'Email or username<input required id="email" autocomplete="username">')+'</label><label>Password<input required type="password" id="pass" minlength="6" autocomplete="'+(reg?'new-password':'current-password')+'"></label><p id="error" role="alert"></p><button class="primary">'+(reg?'Sign up':'Log in')+'</button> <button type="button" class="link" onclick="auth('+!reg+','+destination+')">'+(reg?'Log in instead':'Create account')+'</button></form>');
+ const form=$('#access'),errorBox=$('#error');
+ form.onsubmit=async event=>{
+  event.preventDefault();const submit=form.querySelector('.primary');if(submit.disabled)return;
+  const name=reg?$('#handle').value.trim():'',email=$('#email').value.trim(),password=$('#pass').value;
+  if(reg&&!name){errorBox.textContent='Enter a username.';return}
+  const useHandle=reg?!email:!email.includes('@');
+  const handle=reg?name:email;
+  if(useHandle&&!validHandle(handle)){errorBox.textContent='For username sign-in, use 3–24 letters, numbers, or underscores.';return}
+  if(email.toLowerCase().endsWith('@'+usernameDomain)){errorBox.textContent='Enter your username directly or use your own email address.';return}
+  const signInAddress=useHandle?handleAddress(handle):email;
+  submit.disabled=true;errorBox.textContent='';
+  try{
+   if(!window.arcadeAccounts)throw Error('Firebase sign-in is unavailable. Check your connection and reload the page.');
+   const api=window.arcadeAccounts;
+   const result=reg?await api.register(signInAddress,password):await api.login(signInAddress,password);
+   let notice='';
+   if(reg){try{await api.rename(result.user,name)}catch{notice='You can set your display name in Profile.'}}
+   syncPlayer(result.user);if(!form.isConnected)return;
+   closeBox();show(destination);
+   if(reg)dialog('<div class="spark">✦</div><h2>Welcome, '+esc(name)+'!</h2><p>Your arcade is ready. '+notice+'</p><button class="primary" onclick="tour(0)">Take the tour →</button> <button onclick="closeBox()">Skip</button>')
+  }catch(error){errorBox.textContent=useHandle&&error.code==='auth/email-already-in-use'?'That username is taken. Choose another or log in.':accountError(error)}finally{submit.disabled=false}
+ }
+}
+const tourStops=[
+ ['.orbit','Pick a game from Home','Select a featured card to open its game viewer. The Games tab has the full collection.'],
+ ['.library-tools','Find your next game','Type part of a title or pick its first letter. Select a result to play.'],
+ ['#chat','Visit the chat room','Choose Main, Games, Websites, or School. Sign in to send a message. Messages appear for everyone signed into this room.'],
+ ['#side','Put the menu where you like it','Choose left, right, top, or bottom. You can also replay this tour from Settings.'],
+ ['#page .panel','Your profile','Register or log in here. Once signed in, you can change your display name or log out.']
+];
+let tourOrigin=0,tourTarget=null;
+function alignTour(){
+ const guide=$('#guide');if(!guide.open||!tourTarget)return;
+ const r=tourTarget.getBoundingClientRect(),w=guide.clientWidth,h=guide.clientHeight,ring=$('#guide-ring'),card=$('#guide-card');
+ const left=Math.max(5,r.left-5),top=Math.max(5,r.top-5),right=Math.min(w-5,r.right+5),bottom=Math.min(h-5,r.bottom+5);
+ Object.assign(ring.style,{left:left+'px',top:top+'px',width:Math.max(0,right-left)+'px',height:Math.max(0,bottom-top)+'px'});
+ const ch=card.offsetHeight,cw=card.offsetWidth,below=bottom+14,above=top-ch-14;
+ card.style.top=Math.max(8,Math.min(h-ch-8,below+ch<=h-8?below:above>=8?above:h-ch-8))+'px';
+ card.style.left=Math.max(8,Math.min(w-cw-8,left))+'px'
+}
+function endTour(finished){
+ const guide=$('#guide');guide.close();tourTarget=null;window.removeEventListener('resize',alignTour);window.removeEventListener('scroll',alignTour);
+ if(/^#game-/.test(location.hash))route();else show(finished?0:tourOrigin)
+}
+function tour(i){
+ const guide=$('#guide');
+ if(!guide.open){tourOrigin=current;if($('#modal').open)closeBox();document.body.classList.remove('playing');guide.showModal();window.addEventListener('resize',alignTour);window.addEventListener('scroll',alignTour);guide.oncancel=e=>{e.preventDefault();endTour(false)}}
+ show(i,true);clearTimeout(carouselTimer);
+ const [selector,title,description]=tourStops[i];tourTarget=$(selector);
+ tourTarget.scrollIntoView({block:'nearest',behavior:'instant'});
+ $('#guide-step').textContent='Arcade tour · '+(i+1)+' of '+tourStops.length;
+ $('#guide-title').textContent=title;$('#guide-copy').textContent=description;
+ $('#guide-fill').style.width=((i+1)/tourStops.length*100)+'%';
+ const back=$('#guide-back'),next=$('#guide-next');back.disabled=i===0;back.onclick=()=>tour(i-1);
+ next.textContent=i===tourStops.length-1?'Finish tour':'Next →';
+ next.onclick=()=>i===tourStops.length-1?endTour(true):tour(i+1);
+ alignTour();next.focus({preventScroll:true});
+ if(!matchMedia('(prefers-reduced-motion: reduce)').matches)$('#guide-copy').animate([{opacity:.15,transform:'translateY(5px)'},{opacity:1,transform:'translateY(0)'}],{duration:300})
+}
+function play(i){
+ if(!games[i])return;
+ history.pushState({arcadeGame:i,returnPage:current},'', '#game-'+(i+gameIdOffset));
+ openViewer(i)
+}
+function openViewer(i){stopRoom();
+ clearTimeout(carouselTimer);document.body.classList.add('playing');
+ $('#page').innerHTML='<section id="viewer"><div class="row"><h2>'+games[i]+'</h2><div class="viewer-actions"><button id="full"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4H4v5m11-5h5v5M4 15v5h5m11-5v5h-5"/></svg><span>Fullscreen</span></button><button id="leave"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>Close</button></div></div><iframe class="game" sandbox="allow-scripts" title="'+games[i]+'"></iframe></section>';
+ const viewer=$('#viewer'),frame=viewer.querySelector('iframe');
+ $('#leave').onclick=()=>{if(history.state?.arcadeGame===i)history.back();else{history.replaceState(null,'',location.href.split('#')[0]);route()}}
+ $('#full').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if(viewer.classList.contains('expanded'))viewer.classList.remove('expanded');else await viewer.requestFullscreen()}catch{viewer.classList.toggle('expanded')}syncFull()};
+ function syncFull(){const full=Boolean(document.fullscreenElement)||viewer.classList.contains('expanded');$('#full span').textContent=full?'Exit fullscreen':'Fullscreen'}
+ document.onfullscreenchange=()=>{if(viewer.isConnected)syncFull()};
+ {
+  const url=imports[i].url;
+  frame.setAttribute('sandbox','allow-scripts allow-same-origin allow-forms allow-pointer-lock');
+  frame.allow='fullscreen; gamepad';frame.src=url;
+  const link=document.createElement('a');link.href=url;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Open game directly ↗';link.style.cssText='color:inherit;font-size:13px;align-self:center';viewer.querySelector('.viewer-actions').prepend(link);
+  window.scrollTo(0,0);return
+ }
+}
+function route(){
+ const match=/^#game-([1-9]\d*)$/.exec(location.hash);
+ if(match&&games[Number(match[1])-gameIdOffset]){current=history.state?.returnPage??0;openViewer(Number(match[1])-gameIdOffset);return}
+ document.body.classList.remove('playing');document.onfullscreenchange=null;show(current)
+}
+window.addEventListener('popstate',route);
+
+let peer='',dmDB,mediaStream,recorder,call,dmUrls=[],viewVersion=0;
+const signal='BroadcastChannel' in window?new BroadcastChannel('afterglow.direct'):null;
+function database(){
+ if(!dmDB)dmDB=new Promise((resolve,reject)=>{
+  const req=indexedDB.open('afterglow.direct',1);
+  req.onupgradeneeded=()=>req.result.createObjectStore('messages',{keyPath:'id',autoIncrement:true}).createIndex('thread','thread');
+  req.onsuccess=()=>resolve(req.result);req.onerror=()=>{dmDB=null;reject(req.error)}
+ });return dmDB
+}
+let relationships=[],directoryNames=new Map(),stopFriends=null,searchRevision=0,friendSession=0;
+const friends=()=>relationships.filter(x=>x.state==='accepted').map(x=>x.other);
+const label=id=>directoryNames.get(id)||profiles()[id]?.name||'Player';
+function tell(text){const el=$('#dm-status');if(el)el.textContent=text}
+function openDM(){
+ if(!profile())return auth(true,2);
+ $('#dm').showModal();peer='';drawFriends();selectPeer('');listenForCalls()
+}
+function drawFriends(){
+ const box=$('#dm-friends');
+ box.replaceChildren();
+ for(const row of relationships){
+  const btn=document.createElement('button');
+  const incoming=row.to===user;
+  btn.textContent=(row.state==='accepted'?'':incoming?'Accept request · ':'Requested · ')+label(row.other);
+  btn.disabled=row.state==='pending'&&!incoming;
+  btn.onclick=async()=>{if(row.state==='accepted')return selectPeer(row.other);
+   btn.disabled=true;try{await window.playerNetwork.accept(row.id)}catch(err){btn.disabled=false;tell(err.message)}};
+  box.append(btn)
+ }
+ if(!relationships.length)box.innerHTML='<p>No conversations yet</p>'
+}
+async function connectFriend(id){
+ const row=relationships.find(x=>x.other===id);
+ if(row?.state==='accepted')return selectPeer(id);
+ try{
+  if(row){if(row.to===user)await window.playerNetwork.accept(row.id)}
+  else await window.playerNetwork.request(user,id);
+  $('#dm-search').hidden=true;tell(row?'Friend request updated.':'Friend request sent.')
+ }catch(err){$('#dm-results').textContent=err.message}
+}
+async function findFriends(){
+ const revision=++searchRevision,term=$('#dm-query').value.trim().toLowerCase(),results=$('#dm-results');
+ if(!term){results.textContent='Enter the start of a display name.';return}
+ results.textContent='Searching…';
+ try{
+  const people=await window.playerNetwork.search(term);
+  if(revision!==searchRevision)return;
+  results.replaceChildren();
+  for(const person of people){if(person.id===user)continue;
+   directoryNames.set(person.id,person.name);
+   const row=relationships.find(x=>x.other===person.id),btn=document.createElement('button');
+   btn.dataset.id=person.id;btn.textContent=person.name+' · '+(!row?'Add friend':row.state==='accepted'?'Message':row.to===user?'Accept request':'Request sent');
+   btn.disabled=row?.state==='pending'&&row.from===user;results.append(btn)
+  }
+  if(!results.children.length)results.textContent='No matching players.'
+ }catch(err){if(revision===searchRevision)results.textContent='Search unavailable: '+err.message}
+}
+function followFriends(account){
+ stopFriends?.();stopFriends=null;relationships=[];directoryNames.clear();searchRevision++;
+ const session=++friendSession;if(!account)return;
+ let version=0;
+ stopFriends=window.playerNetwork.watch('uid_'+account.uid,async rows=>{
+  const revision=++version;
+  const names=await Promise.all(rows.map(async row=>[row.other,await window.playerNetwork.name(row.other).catch(()=>'Player')]));
+  if(session!==friendSession||revision!==version)return;
+  names.forEach(([id,name])=>directoryNames.set(id,name));relationships=rows;
+  if($('#dm').open)drawFriends()
+ },err=>tell('Friends unavailable: '+err.message))
+}
+let stopDirect=null,remoteMessages=[];
+function disconnectThread(){
+ if(stopDirect)stopDirect();
+ stopDirect=null;remoteMessages=[];viewVersion++
+}
+function selectPeer(id){
+ disconnectThread();freeUrls();$('#dm-feed').replaceChildren();
+ stopCapture();peer=id;$('#dm-search').hidden=true;$('#dm-peer').textContent=id?label(id):'Select a conversation';
+ $('#dm-compose').hidden=!id;$('#dm-calls').hidden=!id;$('#dm-text').value='';tell('');drawMessages();
+ if(id){
+  const edge=relationships.find(row=>row.other===id&&row.state==='accepted');
+  if(!edge)return tell('Accept the friend request to message this player.');
+  stopDirect=window.playerNetwork.watchMessages(edge.id,snap=>{
+   if(peer!==id||!$('#dm').open)return;
+   remoteMessages=snap.docs.slice().reverse().map(doc=>{const m=doc.data({serverTimestamps:'estimate'});return {sender:m.sender,text:m.text,kind:m.kind,image:m.image,time:m.createdAt?.toMillis()||Date.now()}});
+   drawMessages()
+  },err=>{if(peer===id)tell('Cannot read this conversation: '+err.message)})
+ }
+}
+function freeUrls(){dmUrls.forEach(url=>URL.revokeObjectURL(url));dmUrls=[]}
+async function drawMessages(){
+ const version=++viewVersion,feed=$('#dm-feed');
+ if(!peer){freeUrls();feed.innerHTML='<div class="dm-empty"><b>Direct Messages</b><p>Select a conversation or start a new one.</p></div>';return}
+ try{
+ const key=[user,peer].sort().join('|');let rows=[];
+ try{const db=await database();rows=await new Promise((resolve,reject)=>{const r=db.transaction('messages').objectStore('messages').index('thread').getAll(key);r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error)});}catch{}
+ rows=rows.concat(remoteMessages).sort((a,b)=>(a.time||0)-(b.time||0));
+ if(version!==viewVersion||!$('#dm').open)return;freeUrls();feed.replaceChildren();
+ for(const m of rows){const item=document.createElement('article'),name=document.createElement('strong');name.textContent=label(m.sender);item.append(name);
+ const body=document.createElement(m.image?'img':m.blob?(m.kind==='voice'?'audio':'img'):'p');
+ if(m.image){body.alt=m.kind==='snap'?'Camera snap':'Shared photo';body.loading='lazy';if(m.image.startsWith('data:image/jpeg;base64,'))body.src=m.image}else if(m.blob){body.src=URL.createObjectURL(m.blob);dmUrls.push(body.src);if(m.kind==='voice')body.controls=true;else body.alt=m.kind==='snap'?'Camera snap':'Shared photo'}else body.textContent=m.text;
+ item.append(body);feed.append(item)}feed.scrollTop=feed.scrollHeight
+ }catch{tell('Message storage is unavailable in this browser.')}
+}
+async function preparePhoto(file){
+ const url=URL.createObjectURL(file),img=new Image();
+ try{
+  img.src=url;await img.decode();
+  const canvas=document.createElement('canvas');
+  let scale=Math.min(1,1200/Math.max(img.naturalWidth,img.naturalHeight));
+  for(let attempt=0;attempt<8;attempt++,scale*=0.75){
+   canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));
+   canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));
+   const ctx=canvas.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,canvas.width,canvas.height);
+   ctx.drawImage(img,0,0,canvas.width,canvas.height);
+   const jpeg=canvas.toDataURL('image/jpeg',0.8);
+   if(jpeg.startsWith('data:image/jpeg;base64,')&&jpeg.length<=240000)return jpeg
+  }
+  throw Error('Choose a smaller photo.')
+ }finally{URL.revokeObjectURL(url)}
+}
+async function sendDirect(kind,data,to=peer){
+ if(!to||!friends().includes(to)||!profile())return false;
+ if(['text','photo','snap'].includes(kind)){
+  const edge=relationships.find(row=>row.other===to&&row.state==='accepted');
+  if(!edge)return false;
+  try{
+   const payload=kind==='text'?{text:data}:{kind,image:await preparePhoto(data)};
+   await window.playerNetwork.sendMessage(edge.id,payload);return true
+  }
+  catch(err){if(peer===to)tell('Message not sent: '+err.message);return false}
+ }
+ try{const db=await database();const tx=db.transaction('messages','readwrite');
+ tx.objectStore('messages').add({thread:[user,to].sort().join('|'),sender:user,kind,time:Date.now(),...(kind==='text'?{text:data}:{blob:data})});
+ await new Promise((resolve,reject)=>{tx.oncomplete=resolve;tx.onerror=tx.onabort=()=>reject(tx.error)});
+ signal?.postMessage({type:'message',from:user,to});await drawMessages();return true
+ }catch{tell('Could not save this message. Check available browser storage.');return false}
+}
+let captureVersion=0;
+function stopCapture(){captureVersion++;if(recorder&&recorder.state!=='inactive'){recorder.onstop=null;recorder.stop()}recorder=null;mediaStream?.getTracks().forEach(t=>t.stop());mediaStream=null;$('#dm-capture').hidden=true;$('#dm-preview').srcObject=null}
+async function capture(kind){
+ if(call)return tell('End the call first.');stopCapture();const version=captureVersion,to=peer;
+ try{const stream=await navigator.mediaDevices.getUserMedia(kind==='snap'?{video:true}:{audio:true});if(version!==captureVersion){stream.getTracks().forEach(t=>t.stop());return}
+ mediaStream=stream;const action=$('#dm-capture-action'),preview=$('#dm-preview');$('#dm-capture').hidden=false;preview.hidden=kind!=='snap';
+ if(kind==='snap'){preview.srcObject=stream;action.textContent='Take and send snap';action.onclick=()=>{if(!preview.videoWidth)return;const c=document.createElement('canvas');c.width=preview.videoWidth;c.height=preview.videoHeight;c.getContext('2d').drawImage(preview,0,0);c.toBlob(blob=>{if(blob)sendDirect('snap',blob,to)},'image/jpeg',.82);stopCapture()}}
+ else{const chunks=[];recorder=new MediaRecorder(stream);recorder.ondataavailable=e=>chunks.push(e.data);recorder.onstop=()=>{const blob=new Blob(chunks,{type:chunks[0]?.type||'audio/webm'});stopCapture();if(blob.size)sendDirect('voice',blob,to)};recorder.start();action.textContent='Stop and send recording';action.onclick=()=>{if(recorder?.state==='recording')recorder.stop()}}
+ }catch{stopCapture();tell('Capture unavailable. Check device access and browser permissions.')}
+}
+let stopRinging=null;
+function listenForCalls(){
+ stopRinging?.();let queue=Promise.resolve();
+ const id=user;
+ stopRinging=window.callService.listen(id,m=>{queue=queue.then(()=>{if(user===id&&$('#dm').open)return receiveCall(m)}).catch(err=>tell(err.message))},err=>tell('Calls unavailable: '+err.message))
+}
+function postSignal(c,type,extra={}){
+ return window.callService.send(c.id,{from:user,edge:c.edge,token:c.token,type,extra})
+}
+function finishCall(notify=true){
+ const c=call;if(!c)return;call=null;clearTimeout(c.timeout);
+ if(notify)postSignal(c,'end').catch(()=>{});
+ if(c.pc){c.pc.onconnectionstatechange=null;c.pc.close()}
+ c.stream?.getTracks().forEach(track=>track.stop());
+ for(const id of ['#dm-remote','#dm-self'])$(id).srcObject=null;
+ $('#dm-callbox').hidden=true
+}
+function callPanel(status,incoming=false){
+ $('#dm-callbox').hidden=false;$('#dm-call-label').textContent=status;$('#dm-answer').hidden=!incoming
+}
+function armCall(c){
+ c.timeout=setTimeout(()=>{if(call===c){finishCall();tell('Call timed out. Open Direct Messages on both devices and try again.')}},60000)
+}
+async function setupCall(c){
+ if(!navigator.mediaDevices?.getUserMedia)throw Error('Camera and microphone access require a secure page with device permissions.');
+ const policy=document.permissionsPolicy||document.featurePolicy;
+ const required=c.video?['microphone','camera']:['microphone'];
+ const blocked=required.filter(device=>policy?.allowsFeature?.(device)===false);
+ if(blocked.length)throw Error('This page blocks '+blocked.join(' and ')+'. '+(window.self!==window.top?'Open the arcade at its own HTTPS address or enable these permissions on the hosting iframe.':'Check the hosting site’s permissions policy.'));
+ let stream;
+ try{stream=await navigator.mediaDevices.getUserMedia({audio:true,video:c.video})}
+ catch(err){
+  if(err.name==='NotAllowedError'||err.name==='SecurityError')throw Error('Device access denied. Allow '+required.join(' and ')+' in your browser’s site settings, check your device privacy settings, then retry.'+(window.self!==window.top?' If there is no permission prompt, test the arcade at its own HTTPS address.':''));
+  if(err.name==='NotFoundError')throw Error('No available '+(c.video?'camera or microphone':'microphone')+' was found.');
+  throw err
+ }
+ if(call!==c){stream.getTracks().forEach(t=>t.stop());return false}
+ c.stream=stream;
+ $('#dm-self').hidden=!c.video;if(c.video)$('#dm-self').srcObject=stream;
+ const pc=c.pc=new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'},...(window.arcadeTurnServers||[])]});
+ for(const track of stream.getTracks())pc.addTrack(track,stream);
+ pc.onicecandidate=e=>{if(e.candidate&&call===c)postSignal(c,'ice',{candidate:e.candidate.toJSON()}).catch(err=>{if(call===c)tell(err.message)})};
+ pc.ontrack=e=>{if(call!==c)return;$('#dm-remote').srcObject=e.streams[0];$('#dm-remote').play().catch(()=>tell('Press play to hear the call.'))};
+ pc.onconnectionstatechange=()=>{if(call!==c)return;if(pc.connectionState==='connected'){clearTimeout(c.timeout);callPanel('In call with '+label(c.id))}if(pc.connectionState==='failed'){finishCall();tell('Connection failed. This network may need a TURN relay.')}};
+ return true
+}
+async function dial(video){
+ if(call||!peer)return;const edge=relationships.find(x=>x.other===peer&&x.state==='accepted');
+ if(!edge||!window.RTCPeerConnection)return tell('Calling is unavailable.');
+ stopCapture();const c=call={id:peer,edge:edge.id,token:crypto.randomUUID(),video,ice:[]};
+ armCall(c);callPanel('Calling '+label(peer)+'…');
+ try{await postSignal(c,'ring',{video})}catch(err){if(call===c){finishCall(false);tell(err.message)}}
+}
+async function acceptCall(){
+ const c=call;if(!c||c.answered)return;c.answered=true;selectPeer(c.id);callPanel('Connecting…');
+ try{if(await setupCall(c))await postSignal(c,'accept')}catch(err){if(call===c){finishCall();tell(err.code==='permission-denied'?'Firebase blocked the call response. Check the published callSignals rules and confirm both accounts are accepted friends.':'Could not answer: '+err.message)}}
+}
+async function receiveCall(m){
+ if(m.to!==user)return;
+ if(m.type==='ring'){
+  if(call){if(call.token!==m.token)await postSignal({id:m.from,edge:m.edge,token:m.token},'end');return}
+  const c=call={id:m.from,edge:m.edge,video:m.video===true,token:m.token,ice:[]};
+  armCall(c);callPanel('Incoming '+(c.video?'video':'voice')+' call from '+label(c.id),true);return
+ }
+ const c=call;if(!c||c.token!==m.token||c.id!==m.from)return;
+ try{
+  if(m.type==='end'){finishCall(false);tell('Call ended.');return}
+  if(m.type==='accept'&&!c.pc){callPanel('Connecting…');if(!await setupCall(c))return;await c.pc.setLocalDescription(await c.pc.createOffer());if(call===c)await postSignal(c,'offer',{sdp:c.pc.localDescription.toJSON()})}
+  if(m.type==='offer'||m.type==='answer'){
+   await c.pc.setRemoteDescription(m.sdp);
+   for(const ice of c.ice.splice(0))await c.pc.addIceCandidate(ice);
+   if(m.type==='offer'){await c.pc.setLocalDescription(await c.pc.createAnswer());if(call===c)await postSignal(c,'answer',{sdp:c.pc.localDescription.toJSON()})}
+  }
+  if(m.type==='ice'){if(c.pc?.remoteDescription)await c.pc.addIceCandidate(m.candidate);else c.ice.push(m.candidate)}
+ }catch(err){if(call===c){finishCall();tell('Call failed: '+err.message)}}
+}
+if(signal)signal.onmessage=({data:m})=>{if(m.type==='message'&&m.to===user&&peer===m.from&&$('#dm').open)drawMessages()};
+$('#dm-find').onclick=()=>{$('#dm-search').hidden=false;$('#dm-query').value='';findFriends();$('#dm-query').focus()};
+$('#dm-query').oninput=findFriends;$('#dm-results').onclick=e=>{const b=e.target.closest('button');if(b)connectFriend(b.dataset.id)};
+$('#dm-compose').onsubmit=async e=>{e.preventDefault();const input=$('#dm-text'),value=input.value.trim(),id=peer;const send=e.currentTarget.querySelector('.dm-write button');if(!value||send.disabled)return;send.disabled=true;try{if(await sendDirect('text',value,id)&&id===peer&&input.value.trim()===value)input.value=''}finally{send.disabled=false}};
+$('#dm-photo').onchange=e=>{const file=e.target.files[0];if(file?.type.startsWith('image/'))sendDirect('photo',file);e.target.value=''};
+$('#dm').onclose=()=>{stopRinging?.();stopRinging=null;disconnectThread();finishCall();stopCapture();viewVersion++;freeUrls();peer=''};
+window.addEventListener('pagehide',()=>{finishCall();stopCapture()});
+window.addEventListener('storage',e=>{if($('#dm').open&&e.key==='afterglow.friends.'+user)drawFriends()});
+
+function welcomeOnArrival(){
+ if(profile()||read('welcomeSeen',false))return;
+ dialog('<section class="arrival"><h2 id="arrival-title"><span>Welcome to</span>NOTMINE4REAL</h2><div class="arrival-actions"><button class="primary" id="arrival-register">Register</button><button id="arrival-login">Log in</button></div><button class="link" id="arrival-guest">Continue as guest</button></section>');
+ const modal=$('#modal');
+ modal.setAttribute('aria-labelledby','arrival-title');
+ const logo=$('.sidebar-logo').cloneNode(false);
+ logo.removeAttribute('class');logo.alt='';$('.arrival').prepend(logo);
+ function choose(register){
+  modal.removeAttribute('aria-labelledby');modal.removeEventListener('cancel',dismiss);
+  closeBox();
+  if(typeof register==='boolean')auth(register)
+ }
+ function dismiss(){choose()}
+ modal.addEventListener('cancel',dismiss);
+ $('#arrival-register').onclick=()=>choose(true);
+ $('#arrival-login').onclick=()=>choose(false);
+ $('#arrival-guest').onclick=()=>{choose();tour(0)};
+ save('welcomeSeen',true)
+}
+route();
+welcomeOnArrival();
+</script><script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+  import { getAuth, setPersistence, browserSessionPersistence, inMemoryPersistence, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBfX6MlS86zTLcP7v0Eas8C2Ke1oOdjwNw",
+    authDomain: "notmine4reals.firebaseapp.com",
+    projectId: "notmine4reals",
+    storageBucket: "notmine4reals.firebasestorage.app",
+    messagingSenderId: "109636594435",
+    appId: "1:109636594435:web:dd072f964f5a8cefbb5736"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const service = getAuth(app);
+  const {getFirestore,collection,query,orderBy,limit,onSnapshot,addDoc,serverTimestamp,doc,getDoc,getDocs,setDoc,updateDoc,where,startAt,endAt,deleteDoc}=await import("https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js");
+  const db=getFirestore(app);
+  const directory=collection(db,'players'),edges=collection(db,'friendships');
+  async function publishPlayer(account){
+    const name=account.displayName||'Player',id='uid_'+account.uid;
+    await setDoc(doc(directory,id),{name,searchName:name.toLowerCase()})
+  }
+  const threadMessages=id=>collection(db,'friendships',id,'messages');
+  const mailbox=id=>collection(db,'players',id,'callSignals');
+  window.callService={
+    send:(to,packet)=>addDoc(mailbox(to),{from:packet.from,edge:packet.edge,token:packet.token,type:packet.type,payload:JSON.stringify(packet.extra),createdAt:serverTimestamp()}),
+    listen:(id,receive,fail)=>onSnapshot(query(mailbox(id),orderBy('createdAt','asc')),snap=>{
+      for(const change of snap.docChanges()){
+        if(change.type!=='added')continue;
+        const record=change.doc.data();
+        if(record.createdAt&&Date.now()-record.createdAt.toMillis()<90000){
+          try{receive({...JSON.parse(record.payload),from:record.from,to:id,type:record.type,token:record.token,edge:record.edge})}catch{}
+        }
+        deleteDoc(change.doc.ref).catch(()=>{})
+      }
+    },fail)
+  };
+  window.playerNetwork={
+   watchMessages:(id,receive,fail)=>onSnapshot(query(threadMessages(id),orderBy('createdAt','desc'),limit(100)),receive,fail),
+   sendMessage:(id,payload)=>addDoc(threadMessages(id),{sender:'uid_'+service.currentUser.uid,...payload,createdAt:serverTimestamp()}),
+   search:async term=>(await getDocs(query(directory,orderBy('searchName'),startAt(term),endAt(term+'\uf8ff'),limit(30)))).docs.map(d=>({id:d.id,name:d.data().name})),
+   name:async id=>(await getDoc(doc(directory,id))).data()?.name||'Player',
+   request:(from,to)=>setDoc(doc(edges,[from,to].sort().join('~')),{from,to,members:[from,to],state:'pending'}),
+   accept:id=>updateDoc(doc(edges,id),{state:'accepted'}),
+   watch:(id,receive,fail)=>onSnapshot(query(edges,where('members','array-contains',id)),snap=>receive(snap.docs.map(d=>{const v=d.data();return {...v,id:d.id,other:v.from===id?v.to:v.from}})),fail)
+  };
+  const roomMessages=room=>collection(db,'rooms',room,'messages');
+  window.publicRooms={
+    watch:(room,receive,fail)=>onSnapshot(query(roomMessages(room),orderBy('createdAt','desc'),limit(100)),{includeMetadataChanges:true},receive,fail),
+    send:(room,name,text)=>addDoc(roomMessages(room),{uid:service.currentUser.uid,name,text,createdAt:serverTimestamp()})
+  };
+  try { await setPersistence(service,browserSessionPersistence) }
+  catch { await setPersistence(service,inMemoryPersistence) }
+  window.arcadeAccounts={
+    current:()=>service.currentUser,
+    register:(email,password)=>createUserWithEmailAndPassword(service,email,password),
+    login:(email,password)=>signInWithEmailAndPassword(service,email,password),
+    logout:()=>signOut(service),
+    rename:async(account,name)=>{await updateProfile(account,{displayName:name});await publishPlayer(account)}
+  };
+  onAuthStateChanged(service,account=>{
+    syncPlayer(account);followFriends(account);if(account)publishPlayer(account).catch(err=>tell(err.message));
+    if(!document.body.classList.contains('playing')&&!document.querySelector('dialog[open]')&&(current===4||current===2))show(current===2&&!account?0:current);
+  });
+</script>
+</body></html>
