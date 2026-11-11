@@ -590,13 +590,11 @@ let mem={},persistent=true;function read(k,d){try{return JSON.parse(localStorage
 let user='',profiles=()=>read('firebaseProfiles',{}),profile=()=>profiles()[user],current=0;const esc=v=>String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));document.body.dataset.side=read('side','left');
 
 const videoWallpapers = {
-  "Cliffside view": "cliffside-view.mp4",
-  "Minecraft · Campfire Cat at Night": "minecraft-campfire-cat-night.mp4",
-  "Minecraft · Dog Sailing the Ocean": "minecraft-dog-sailing-the-ocean.mp4",
-  "Fallen Knight in a Rainy Flower Field": "fallen-knight-in-flower-field-rain.mp4",
-  "Black Armored Knight and Red Flowers": "black-armored-knight-red-flowers.mp4",
-  "Attack on Titan · The Rumbling": "attack-on-titan-colossal-titans-rumbling.mp4",
-  "Minecraft · Colorful Coral Reef": "minecraft-colorful-coral-reef.mp4"
+  "Batman · Glowing Eyes": "shadow-batman-glow-eyes-wallpaperwaves-com.mp4",
+  "Knight Resting by a Bonfire": "knight-resting-by-bonfire-pixel-art-wallpaperwaves-com.mp4",
+  "Minecraft · Steve": "steve-minecraft.1920x1080.mp4",
+  "Minecraft · Sunset": "minecraft-sunset.3840x2160.mp4",
+  "Black Armored Knight and Red Flowers": "black-armored-knight-red-flowers.mp4"
 };
 const preferenceGroups={
  Cards:[
